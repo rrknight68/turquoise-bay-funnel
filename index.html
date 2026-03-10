@@ -183,6 +183,29 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.2}
 .footer-location{font-size:0.82rem;margin:8px 0}
 .footer-legal{font-size:0.7rem;color:rgba(255,255,255,0.35);max-width:700px;margin:20px auto 0;line-height:1.6}
 
+/* ─── MODAL ─────────────────────────────────────────────────────── */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.7);align-items:center;justify-content:center;padding:24px}
+.modal-overlay.open{display:flex}
+.modal-card{background:#0D1F3C;border:1px solid rgba(201,168,76,0.3);border-radius:16px;padding:2.5rem;max-width:480px;width:100%;position:relative;max-height:90vh;overflow-y:auto}
+.modal-close{position:absolute;top:16px;right:20px;background:none;border:none;color:rgba(255,255,255,0.5);font-size:1.6rem;cursor:pointer;line-height:1;transition:color 0.2s}
+.modal-close:hover{color:var(--white)}
+.modal-card h2{font-family:var(--display);font-size:1.8rem;color:var(--white);margin-bottom:8px}
+.modal-card .modal-sub{font-family:var(--body);font-size:0.85rem;color:var(--gray);margin-bottom:24px;line-height:1.6}
+.modal-card label{display:block;font-family:var(--body);font-size:0.75rem;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:6px}
+.modal-card input,.modal-card select,.modal-card textarea{width:100%;padding:12px 14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:6px;color:var(--white);font-family:var(--body);font-size:0.9rem;margin-bottom:16px;outline:none;transition:border-color 0.2s}
+.modal-card input:focus,.modal-card select:focus,.modal-card textarea:focus{border-color:var(--gold)}
+.modal-card input::placeholder,.modal-card textarea::placeholder{color:rgba(255,255,255,0.3)}
+.modal-card select option{background:var(--navy);color:var(--white)}
+.modal-card textarea{resize:vertical;min-height:70px}
+.modal-submit{width:100%;padding:14px;background:var(--gold);color:var(--navy);font-family:var(--body);font-size:0.8rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;border:none;border-radius:6px;cursor:pointer;transition:background 0.3s}
+.modal-submit:hover{background:#b8953e}
+.modal-submit:disabled{opacity:0.6;cursor:not-allowed}
+.modal-error{font-size:0.82rem;color:var(--gold);margin-bottom:12px;display:none}
+.modal-thank-you{text-align:center}
+.modal-thank-you h2{margin-bottom:12px}
+.modal-thank-you .modal-sub{margin-bottom:28px}
+.modal-thank-you .btn{display:inline-block;margin-top:8px}
+
 /* ─── RESPONSIVE ─────────────────────────────────────────────────── */
 @media(max-width:1024px){
   .opp-grid,.invest-grid,.vision-grid{grid-template-columns:repeat(2,1fr)}
@@ -231,7 +254,7 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.2}
       <a href="#team">Team</a>
       <a href="#faq">FAQ</a>
       <a href="#invite" class="btn-outline" style="padding:6px 14px;border-radius:3px;font-size:0.7rem">View Deck</a>
-      <a href="#invite" class="cta-link">Reserve Spot</a>
+      <a href="#" class="cta-link" onclick="openLeadModal(event)">Reserve Spot</a>
     </div>
   </div>
 </nav>
@@ -246,7 +269,7 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.2}
     <p class="hero-sub">A Waterfront Resort & Marina on Florida's Gulf Coast</p>
     <p class="hero-detail">Projected 23% IRR, 2.0x equity multiple, and direct ownership in a ground-up mixed-use waterfront resort.</p>
     <div class="hero-ctas">
-      <a href="#invite" class="btn btn-gold">Reserve Your Investor Spot</a>
+      <a href="#" class="btn btn-gold" onclick="openLeadModal(event)">Reserve Your Investor Spot</a>
       <a href="#invite" class="btn btn-outline">View Investor Deck</a>
     </div>
     <div class="hero-stats">
@@ -606,7 +629,7 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.2}
       <div class="invite-feat"><div class="feat-check">&#10003;</div>Access to sponsor team</div>
     </div>
     <div class="invite-ctas reveal">
-      <a href="#" class="btn btn-gold">Reserve My Allocation</a>
+      <a href="#" class="btn btn-gold" onclick="openLeadModal(event)">Reserve My Allocation</a>
       <a href="https://calendly.com/michael-vpiflorida" target="_blank" rel="noopener" class="btn btn-outline">Schedule a Call</a>
     </div>
   </div>
@@ -654,11 +677,47 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.2}
     <h2>Secure Your Allocation in Turquoise Bay Resort</h2>
     <p>With strong appraisal values, elite waterfront positioning, and a highly experienced development team, Turquoise Bay offers a rare opportunity to participate in a premier Gulf Coast resort project.</p>
     <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-      <a href="#invite" class="btn btn-gold">Request the Full Investment Summary</a>
+      <a href="#" class="btn btn-gold" onclick="openLeadModal(event)">Request the Full Investment Summary</a>
       <a href="https://calendly.com/michael-vpiflorida" target="_blank" rel="noopener" class="btn btn-outline">Schedule a Strategy Call</a>
     </div>
   </div>
 </section>
+
+<!-- ════════ LEAD CAPTURE MODAL ════════ -->
+<div class="modal-overlay" id="leadModal">
+  <div class="modal-card">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <div id="modalForm">
+      <h2>Reserve Your Allocation</h2>
+      <p class="modal-sub">Complete your information and our team will be in touch within 24 hours.</p>
+      <div class="modal-error" id="modalError"></div>
+      <form id="leadForm" autocomplete="on">
+        <label for="lead-name">Full Name</label>
+        <input type="text" id="lead-name" name="name" placeholder="Your full name" required>
+        <label for="lead-email">Email Address</label>
+        <input type="email" id="lead-email" name="email" placeholder="you@example.com" required>
+        <label for="lead-phone">Phone Number</label>
+        <input type="tel" id="lead-phone" name="phone" placeholder="(555) 123-4567" required>
+        <label for="lead-amount">Investment Amount</label>
+        <select id="lead-amount" name="invest_amount" required>
+          <option value="" disabled selected>Select amount</option>
+          <option value="$25K-$50K">$25K – $50K</option>
+          <option value="$50K-$100K">$50K – $100K</option>
+          <option value="$100K-$250K">$100K – $250K</option>
+          <option value="$250K+">$250K+</option>
+        </select>
+        <label for="lead-message">Questions for our team?</label>
+        <textarea id="lead-message" name="message" placeholder="Optional"></textarea>
+        <button type="submit" class="modal-submit" id="modalSubmitBtn">Submit &amp; Reserve Allocation</button>
+      </form>
+    </div>
+    <div id="modalThankYou" class="modal-thank-you" style="display:none">
+      <h2 id="thankYouHeading"></h2>
+      <p class="modal-sub">A member of our team will contact you within 24 hours.</p>
+      <a href="https://calendly.com/michael-vpiflorida" target="_blank" rel="noopener" class="btn btn-gold">Schedule Your Call Now &rarr;</a>
+    </div>
+  </div>
+</div>
 
 <!-- ════════ FOOTER ════════ -->
 <footer class="footer">
@@ -711,6 +770,83 @@ function toggleFaq(el) {
     el.nextElementSibling.classList.add('open');
   }
 }
+
+// ─── LEAD CAPTURE MODAL ────────────────────────────────────────
+const SUPABASE_URL = 'https://cdwovynxgldhnbmdvgoo.supabase.co';
+const SUPABASE_ANON_KEY = 'REPLACE_WITH_YOUR_ANON_KEY';
+
+const leadModal = document.getElementById('leadModal');
+const modalClose = document.getElementById('modalClose');
+const leadForm = document.getElementById('leadForm');
+const modalError = document.getElementById('modalError');
+const modalFormDiv = document.getElementById('modalForm');
+const modalThankYou = document.getElementById('modalThankYou');
+
+function openLeadModal(e) {
+  e.preventDefault();
+  modalFormDiv.style.display = '';
+  modalThankYou.style.display = 'none';
+  modalError.style.display = 'none';
+  leadForm.reset();
+  leadModal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLeadModal() {
+  leadModal.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+modalClose.addEventListener('click', closeLeadModal);
+leadModal.addEventListener('click', function(e) {
+  if (e.target === leadModal) closeLeadModal();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && leadModal.classList.contains('open')) closeLeadModal();
+});
+
+leadForm.addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('modalSubmitBtn');
+  btn.disabled = true;
+  btn.textContent = 'Submitting...';
+  modalError.style.display = 'none';
+
+  const payload = {
+    name: document.getElementById('lead-name').value.trim(),
+    email: document.getElementById('lead-email').value.trim(),
+    phone: document.getElementById('lead-phone').value.trim(),
+    invest_amount: document.getElementById('lead-amount').value,
+    message: document.getElementById('lead-message').value.trim() || null,
+    source: 'tb_funnel',
+    project: 'turquoise_bay',
+    created_at: new Date().toISOString()
+  };
+
+  try {
+    const res = await fetch(SUPABASE_URL + '/rest/v1/leads', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(payload)
+    });
+    if (!res.ok) throw new Error('Submission failed. Please try again.');
+    const firstName = payload.name.split(' ')[0];
+    document.getElementById('thankYouHeading').textContent = 'Thank you, ' + firstName + '. Your allocation request has been received.';
+    modalFormDiv.style.display = 'none';
+    modalThankYou.style.display = '';
+  } catch (err) {
+    modalError.textContent = err.message || 'Something went wrong. Please try again.';
+    modalError.style.display = 'block';
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Submit & Reserve Allocation';
+  }
+});
 </script>
 </body>
 </html>
