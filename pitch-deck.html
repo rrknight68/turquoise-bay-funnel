@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Turquoise Bay Resort & Marina — Investment Summary</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@200;300;400;500;600&family=Cinzel:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0D1F3C; --gold: #C9A84C; --gold-light: #DFC078;
+    --teal: #2A7C6F; --teal-light: #3BA898;
+    --white: #FFFFFF; --cream: #F8F5F0; --gray: #6B7280; --text: #2C3344;
+  }
+  body { font-family: 'Jost', sans-serif; background: #b0aca6; color: var(--text); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+  /* Every page is exactly 11in — flex column fills it */
+  .page { width: 8.5in; height: 11in; background: var(--white); margin: 0.45in auto; position: relative; overflow: hidden; box-shadow: 0 6px 48px rgba(0,0,0,0.25); display: flex; flex-direction: column; }
+  @media print { body { background: white; } .page { margin: 0; box-shadow: none; page-break-after: always; } .page:last-child { page-break-after: avoid; } }
+
+  /* APPROVED LOGO — Variant 02: Cinzel centered three-line gold dot separators */
+  .logo { display: flex; flex-direction: column; align-items: center; line-height: 1; }
+  .logo .l1 { font-family: 'Cinzel', serif; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase; color: var(--white); }
+  .logo .l2 { display: flex; align-items: center; gap: 5px; margin: 3px 0; }
+  .logo .l2 .dot { border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+  .logo .l3 { font-family: 'Cinzel', serif; font-weight: 400; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
+  .logo.sm .l1 { font-size: 8.5pt; } .logo.sm .l3 { font-size: 5pt; } .logo.sm .l2 .dot { width: 2.5px; height: 2.5px; }
+  .logo.md .l1 { font-size: 13pt; } .logo.md .l3 { font-size: 6.5pt; } .logo.md .l2 .dot { width: 3.5px; height: 3.5px; }
+  .logo.dark .l1 { color: var(--navy); }
+
+  /* Page header */
+  .ph { background: var(--navy); padding: 0.15in 0.5in; display: flex; align-items: center; justify-content: space-between; flex-shrink: 0; }
+  .ph-sec { font-family: 'Cinzel', serif; font-size: 7pt; letter-spacing: 0.25em; color: rgba(255,255,255,0.4); text-transform: uppercase; }
+  .ph-num { font-family: 'Jost', sans-serif; font-size: 7pt; color: rgba(255,255,255,0.22); }
+
+  /* Body — fills remaining height */
+  .body { flex: 1; display: flex; flex-direction: column; padding: 0.28in 0.5in; overflow: hidden; }
+
+  /* Typography */
+  .ey { font-family: 'Cinzel', serif; font-size: 7pt; letter-spacing: 0.3em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.06in; }
+  .ey.t { color: var(--teal); }
+  .h2 { font-family: 'Cormorant Garamond', serif; font-size: 22pt; font-weight: 400; color: var(--navy); line-height: 1.1; margin-bottom: 0.1in; }
+  .h2 em { font-style: italic; color: var(--teal); }
+  .h2.sm { font-size: 17pt; }
+  .prose { font-size: 9.5pt; font-weight: 300; line-height: 1.75; color: var(--gray); }
+  .rule { width: 100%; height: 1px; background: linear-gradient(to right, var(--gold), rgba(201,168,76,0.1)); margin: 0.1in 0; flex-shrink: 0; }
+
+  /* Grids */
+  .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 0.18in; }
+  .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.13in; }
+  .g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 0.11in; }
+
+  /* Tiles */
+  .tile { background: var(--navy); border-radius: 6px; padding: 0.12in 0.1in; text-align: center; }
+  .tile .v { font-family: 'Cormorant Garamond', serif; font-size: 18pt; font-weight: 500; color: var(--gold); line-height: 1; display: block; }
+  .tile .l { font-family: 'Cinzel', serif; font-size: 5.5pt; letter-spacing: 0.15em; color: rgba(255,255,255,0.45); text-transform: uppercase; display: block; margin-top: 4px; }
+
+  /* Cards */
+  .nc { background: var(--navy); border-radius: 7px; padding: 0.14in 0.17in; }
+  .nc h4 { font-family: 'Cinzel', serif; font-size: 6.5pt; letter-spacing: 0.17em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.05in; }
+  .nc p { font-size: 8.5pt; font-weight: 300; color: rgba(255,255,255,0.68); line-height: 1.65; }
+  .nc .big { font-family: 'Cormorant Garamond', serif; font-size: 21pt; font-weight: 500; color: var(--gold); line-height: 1; display: block; margin-bottom: 0.04in; }
+
+  .tc { background: rgba(42,124,111,0.07); border-left: 3px solid var(--teal); border-radius: 0 5px 5px 0; padding: 0.085in 0.12in; }
+  .tc h4 { font-family: 'Cinzel', serif; font-size: 6.5pt; letter-spacing: 0.13em; color: var(--teal); text-transform: uppercase; margin-bottom: 3px; }
+  .tc p { font-size: 8.5pt; font-weight: 300; color: var(--text); line-height: 1.55; }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; }
+  th { font-family: 'Cinzel', serif; font-size: 6.5pt; letter-spacing: 0.11em; text-transform: uppercase; color: var(--white); background: var(--navy); padding: 0.06in 0.09in; text-align: left; }
+  td { font-size: 8.5pt; padding: 0.052in 0.09in; border-bottom: 1px solid rgba(13,31,60,0.07); color: var(--text); }
+  tr:nth-child(even) td { background: var(--cream); }
+  .n { text-align: right; font-variant-numeric: tabular-nums; }
+  .tot td { background: rgba(201,168,76,0.1) !important; font-weight: 600; border-top: 1.5px solid var(--gold); color: var(--navy); }
+
+  /* Checks */
+  .ck { list-style: none; }
+  .ck li { font-size: 8.5pt; font-weight: 300; color: var(--text); line-height: 1.62; padding-left: 0.14in; position: relative; margin-bottom: 0.02in; }
+  .ck li::before { content: '✓'; position: absolute; left: 0; color: var(--teal); font-weight: 700; font-size: 8pt; }
+  .ck.w li { color: rgba(255,255,255,0.7); }
+
+  /* Stack bar */
+  .sb { border-radius: 4px; padding: 0.062in 0.11in; display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px; }
+  .sb span { font-size: 8pt; font-weight: 300; }
+
+  /* Timeline */
+  .tl { display: flex; gap: 0.14in; margin-bottom: 0.11in; align-items: flex-start; }
+  .tl-d { min-width: 0.85in; text-align: right; padding-right: 0.12in; padding-top: 0.03in; }
+  .tl-d .q { font-family: 'Cinzel', serif; font-size: 6.5pt; }
+  .tl-d .m { font-size: 7pt; color: var(--gray); font-weight: 300; }
+  .tl-dot { width: 13px; height: 13px; min-width: 13px; border-radius: 50%; margin-top: 3px; flex-shrink: 0; }
+  .tl-c { flex: 1; border-radius: 6px; padding: 0.09in 0.13in; }
+  .tl-c h5 { font-family: 'Cinzel', serif; font-size: 6.5pt; letter-spacing: 0.11em; text-transform: uppercase; margin-bottom: 3px; }
+  .tl-c p { font-size: 8pt; font-weight: 300; line-height: 1.52; }
+
+  /* Footer */
+  .foot { flex-shrink: 0; padding: 0.085in 0.5in; border-top: 1px solid rgba(13,31,60,0.08); }
+  .foot p { font-size: 5.5pt; color: rgba(13,31,60,0.27); line-height: 1.4; }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     PAGE 1 — COVER
+══════════════════════════════════════ -->
+<div class="page" style="background:var(--navy);">
+
+  <!-- Navy nav bar — above the photo, never covers image -->
+  <div style="background:var(--navy);padding:0.16in 0.5in;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;border-bottom:1px solid rgba(201,168,76,0.17);">
+    <div class="logo md">
+      <div class="l1">Turquoise Bay</div>
+      <div class="l2"><div class="dot" style="width:3.5px;height:3.5px;"></div><div class="dot" style="width:3.5px;height:3.5px;"></div><div class="dot" style="width:3.5px;height:3.5px;"></div></div>
+      <div class="l3">Resort &amp; Marina</div>
+    </div>
+    <div style="display:flex;align-items:center;gap:0.2in;">
+      <span style="font-family:'Cinzel',serif;font-size:6.5pt;letter-spacing:0.2em;color:rgba(255,255,255,0.38);text-transform:uppercase;">A Vantage Point Investments Project</span>
+      <span style="font-family:'Cinzel',serif;font-size:6.5pt;letter-spacing:0.17em;color:var(--gold);border:1px solid rgba(201,168,76,0.42);padding:0.04in 0.11in;border-radius:50px;">Accredited Investors Only</span>
+    </div>
+  </div>
+
+  <!-- Hero photo — flex:1 fills remaining height exactly, no overflow -->
+  <div style="position:relative;flex:1;overflow:hidden;">
+    <img src="./hero.jpg" alt="Turquoise Bay aerial — white sand beaches and mangroves"
+         style="width:100%;height:100%;object-fit:cover;object-position:center 28%;display:block;">
+
+    <!-- Transparent over beach/mangrove zone — darkens only at bottom for text -->
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,
+      rgba(13,31,60,0.04) 0%,
+      rgba(13,31,60,0.0) 16%,
+      rgba(13,31,60,0.0) 45%,
+      rgba(13,31,60,0.40) 65%,
+      rgba(13,31,60,0.92) 100%
+    );"></div>
+
+    <!-- Cover text over bottom of photo -->
+    <div style="position:absolute;bottom:0;left:0;right:0;padding:0 0.55in 0.4in;z-index:2;">
+      <div style="display:inline-block;border:1px solid rgba(201,168,76,0.52);color:var(--gold);font-family:'Cinzel',serif;font-size:6.5pt;letter-spacing:0.27em;text-transform:uppercase;padding:0.05in 0.13in;border-radius:50px;margin-bottom:0.17in;">Confidential Investment Summary · 2026</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:50pt;font-weight:300;color:var(--white);line-height:0.95;margin-bottom:0.07in;">Invest in<br><em style="font-style:italic;color:var(--teal-light);">Turquoise Bay</em></div>
+      <div style="font-family:'Jost',sans-serif;font-size:9.5pt;font-weight:300;letter-spacing:0.11em;color:rgba(255,255,255,0.58);margin-bottom:0.25in;">Englewood, Florida &nbsp;·&nbsp; Gulf Coast Waterfront &nbsp;·&nbsp; Ground-Up Resort Development</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:0.09in;margin-bottom:0.28in;">
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:6px;padding:0.12in 0.1in;text-align:center;">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:20pt;font-weight:500;color:var(--gold);display:block;line-height:1;">23%</span>
+          <span style="font-family:'Cinzel',serif;font-size:5.5pt;letter-spacing:0.14em;color:rgba(255,255,255,0.42);text-transform:uppercase;display:block;margin-top:3px;">Projected IRR</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:6px;padding:0.12in 0.1in;text-align:center;">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:20pt;font-weight:500;color:var(--gold);display:block;line-height:1;">2.0×</span>
+          <span style="font-family:'Cinzel',serif;font-size:5.5pt;letter-spacing:0.14em;color:rgba(255,255,255,0.42);text-transform:uppercase;display:block;margin-top:3px;">LP Equity Multiple</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:6px;padding:0.12in 0.1in;text-align:center;">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:20pt;font-weight:500;color:var(--gold);display:block;line-height:1;">$109.4M</span>
+          <span style="font-family:'Cinzel',serif;font-size:5.5pt;letter-spacing:0.14em;color:rgba(255,255,255,0.42);text-transform:uppercase;display:block;margin-top:3px;">Gross Sellout</span>
+        </div>
+        <div style="background:rgba(255,255,255,0.08);border:1px solid rgba(201,168,76,0.2);border-radius:6px;padding:0.12in 0.1in;text-align:center;">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:20pt;font-weight:500;color:var(--gold);display:block;line-height:1;">$25K</span>
+          <span style="font-family:'Cinzel',serif;font-size:5.5pt;letter-spacing:0.14em;color:rgba(255,255,255,0.42);text-transform:uppercase;display:block;margin-top:3px;">Min. Investment</span>
+        </div>
+      </div>
+      <div style="height:1px;background:rgba(201,168,76,0.2);margin-bottom:0.16in;"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;">
+        <div style="font-family:'Jost',sans-serif;font-size:8pt;font-weight:300;letter-spacing:0.07em;color:rgba(255,255,255,0.35);">42 Residences · 12-Slip Marina · Rooftop Solariums · Resort Clubhouse</div>
+        <div style="font-family:'Jost',sans-serif;font-size:7pt;color:rgba(255,255,255,0.18);letter-spacing:0.05em;">Confidential · Accredited Investors Only</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 2 — EXECUTIVE SUMMARY
+══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="logo sm"><div class="l1">Turquoise Bay</div><div class="l2"><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div></div><div class="l3">Resort &amp; Marina</div></div>
+    <span class="ph-sec">Executive Summary</span><span class="ph-num">02</span>
+  </div>
+  <div class="body">
+    <div class="ey">The Opportunity</div>
+    <div class="h2">A Rare Waterfront Development<br><em>on Florida's Gulf Coast</em></div>
+    <p class="prose" style="margin-bottom:0.11in;">Turquoise Bay Resort &amp; Marina is a ground-up luxury waterfront condo resort in Englewood, Florida — delivering 42 residences, a 12-slip private marina, rooftop solariums, and full resort amenities in a market with virtually zero new waterfront supply.</p>
+    <div class="rule"></div>
+    <div class="g3" style="margin-bottom:0.13in;">
+      <div class="tile"><span class="v">42</span><span class="l">Luxury Residences</span></div>
+      <div class="tile"><span class="v">12</span><span class="l">Marina Slips</span></div>
+      <div class="tile"><span class="v">$11.5M</span><span class="l">BBG Appraised Land</span></div>
+    </div>
+    <div class="g2" style="flex:1;">
+      <div style="display:flex;flex-direction:column;gap:0.085in;">
+        <div class="nc"><h4>Deal Thesis</h4><p>Modern, full-amenity waterfront resort fills a critical supply gap — where 70%+ of existing coastal condo inventory was built before 2000 and faces rising insurance and special assessment pressure driving buyers toward new construction.</p></div>
+        <div class="tc"><h4>Appraisal-Verified</h4><p>BBG, Inc. third-party appraisal confirms $11.5M land value and a projected sellout consistent with our $105.9M residential underwriting.</p></div>
+        <div class="tc"><h4>$5.7M Land Equity at Entry</h4><p>GP-contributed land equity provides LP investors with immediate, appraisal-backed value before construction begins.</p></div>
+        <div class="tc"><h4>GC is GP Equity Partner</h4><p>General contractor holds a direct equity stake — hard budget commitment at deal entry, full cost and schedule alignment from day one.</p></div>
+        <div class="tc"><h4>Award-Winning Design Team</h4><p>Boral Engineering (3 BIS awards) and PDS Architecture (Firm of the Year 2015–17) engaged and design-ready.</p></div>
+      </div>
+      <div class="nc" style="height:100%;">
+        <h4>Key Metrics at a Glance</h4>
+        <table style="margin-top:0.09in;">
+          <tr><td style="color:rgba(255,255,255,0.48);font-size:8.5pt;border:none;padding:0.046in 0;">Projected IRR</td><td class="n" style="color:var(--gold);font-size:9pt;border:none;padding:0.046in 0;font-weight:500;">23%</td></tr>
+          <tr><td style="color:rgba(255,255,255,0.48);font-size:8.5pt;border:none;padding:0.046in 0;">LP Equity Multiple</td><td class="n" style="color:var(--gold);font-size:9pt;border:none;padding:0.046in 0;font-weight:500;">2.0×</td></tr>
+          <tr><td style="color:rgba(255,255,255,0.48);font-size:8.5pt;border:none;padding:0.046in 0;">Gross Sellout</td><td class="n" style="color:var(--gold);font-size:9pt;border:none;padding:0.046in 0;font-weight:500;">$109,354,400</td></tr>
+          <tr><td style="color:rgba(255,255,255,0.48);font-size:8.5pt;border:none;padding:0.046in 0;">Total Dev. Cost</td><td class="n" style="color:var(--gold);font-size:9pt;border:none;padding:0.046in 0;font-weight:500;">$49,893,797</td></tr>
+          <tr><td style="color:rgba(255,255,255,0.48);font-size:8.5pt;border:none;padding:0.046in 0;">Net Profit</td><td class="n" style="color:var(--gold);font-size:9pt;border:none;padding:0.046in 0;font-weight:500;">~$54M</td></tr>
+          <tr><td style="color:rgba(255,255,255,0.48);font-size:8.5pt;border:none;padding:0.046in 0;">Land Value (BBG)</td><td class="n" style="color:var(--gold);font-size:9pt;border:none;padding:0.046in 0;font-weight:500;">$11,500,000</td></tr>
+          <tr><td style="color:rgba(255,255,255,0.48);font-size:8.5pt;border:none;padding:0.046in 0;">Land Equity Contributed</td><td class="n" style="color:var(--gold);font-size:9pt;border:none;padding:0.046in 0;font-weight:500;">$5,733,000</td></tr>
+          <tr><td style="color:rgba(255,255,255,0.48);font-size:8.5pt;border:none;padding:0.046in 0;">Hold Period</td><td class="n" style="color:var(--gold);font-size:9pt;border:none;padding:0.046in 0;font-weight:500;">24–36 months</td></tr>
+          <tr><td style="color:rgba(255,255,255,0.48);font-size:8.5pt;border:none;padding:0.046in 0;">Min. Investment</td><td class="n" style="color:var(--gold);font-size:9pt;border:none;padding:0.046in 0;font-weight:500;">$25,000</td></tr>
+          <tr><td style="color:rgba(255,255,255,0.48);font-size:8.5pt;border:none;padding:0.046in 0;">Total LP Raise</td><td class="n" style="color:var(--gold);font-size:9pt;border:none;padding:0.046in 0;font-weight:500;">$1,900,000</td></tr>
+          <tr><td style="color:rgba(255,255,255,0.48);font-size:8.5pt;border:none;padding:0.046in 0;">Structure</td><td class="n" style="color:var(--gold);font-size:9pt;border:none;padding:0.046in 0;font-weight:500;">Class A LP / Class B GP</td></tr>
+          <tr><td style="color:rgba(255,255,255,0.48);font-size:8.5pt;border:none;padding:0.046in 0;">Permitting Timeline</td><td class="n" style="color:var(--gold);font-size:9pt;border:none;padding:0.046in 0;font-weight:500;">~8 weeks</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><p>Confidential · Accredited Investors Only · Not an offer to sell securities.</p></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 3 — THE PROJECT + IMAGES
+══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="logo sm"><div class="l1">Turquoise Bay</div><div class="l2"><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div></div><div class="l3">Resort &amp; Marina</div></div>
+    <span class="ph-sec">The Project</span><span class="ph-num">03</span>
+  </div>
+  <!-- Aerial waterfront photo -->
+  <div style="position:relative;height:3.45in;flex-shrink:0;overflow:hidden;">
+    <img src="./images/aerial-waterfront.jpg" alt="Aerial waterfront" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;">
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom,rgba(13,31,60,0.06) 0%,rgba(13,31,60,0.0) 35%,rgba(13,31,60,0.65) 100%);"></div>
+    <div style="position:absolute;bottom:0.18in;left:0.5in;right:0.5in;">
+      <div style="font-family:'Cinzel',serif;font-size:7pt;letter-spacing:0.24em;color:var(--gold);margin-bottom:4px;">Englewood, Florida · Lemon Bay / ICW Waterfront</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:19pt;font-weight:400;color:var(--white);line-height:1.1;">Turquoise Bay Resort &amp; Marina <em style="color:var(--teal-light);">— Where the Gulf Meets Luxury Living</em></div>
+    </div>
+  </div>
+  <!-- 3-up rendering strip -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;height:1.5in;flex-shrink:0;">
+    <div style="position:relative;overflow:hidden;">
+      <img src="./images/marina-tiki.jpg" alt="Marina & Tiki Pier" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,31,60,0.8) 0%,transparent 52%);"></div>
+      <div style="position:absolute;bottom:0.09in;left:0.11in;"><div style="font-family:'Cinzel',serif;font-size:5.5pt;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;">Marina &amp; Tiki Pier</div></div>
+    </div>
+    <div style="position:relative;overflow:hidden;">
+      <img src="./images/clubhouse-pool.jpg" alt="Resort Clubhouse" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,31,60,0.8) 0%,transparent 52%);"></div>
+      <div style="position:absolute;bottom:0.09in;left:0.11in;"><div style="font-family:'Cinzel',serif;font-size:5.5pt;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;">Resort Clubhouse &amp; Pool</div></div>
+    </div>
+    <div style="position:relative;overflow:hidden;">
+      <img src="./images/rooftop-sunset.jpg" alt="Rooftop Solarium" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,31,60,0.8) 0%,transparent 52%);"></div>
+      <div style="position:absolute;bottom:0.09in;left:0.11in;"><div style="font-family:'Cinzel',serif;font-size:5.5pt;letter-spacing:0.14em;color:var(--gold);text-transform:uppercase;">Rooftop Solarium Terraces</div></div>
+    </div>
+  </div>
+  <!-- Highlights — flex:1 fills rest -->
+  <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;gap:0.18in;padding:0.18in 0.5in 0.13in;">
+    <div>
+      <div class="ey" style="margin-bottom:0.05in;">Project Highlights</div>
+      <ul class="ck">
+        <li>42 luxury waterfront residences across 3 floors</li>
+        <li>12-slip private marina with tiki pier</li>
+        <li>Rooftop solariums on all top-floor (Type C) units</li>
+        <li>Resort clubhouse, pool deck &amp; beach access</li>
+        <li>$5,733,000 GP-contributed land equity at entry</li>
+        <li>BBG, Inc. third-party appraisal completed</li>
+        <li>GC is direct GP equity partner — budget committed</li>
+        <li>Construction lenders engaged · ~8-week permitting</li>
+        <li>Pickleball courts &amp; full resort amenity program</li>
+      </ul>
+    </div>
+    <div>
+      <div class="ey" style="margin-bottom:0.05in;">Location &amp; Market</div>
+      <ul class="ck">
+        <li>Englewood, FL — Charlotte County Gulf Coast</li>
+        <li>Direct waterfront access — Lemon Bay / ICW</li>
+        <li>45% Charlotte County population growth 2010–2023</li>
+        <li>Punta Gorda Airport — fastest-growing small U.S. airport</li>
+        <li>Direct Allegiant flights from 50+ cities</li>
+        <li>&lt;1% available new waterfront condo supply</li>
+        <li>Median home prices up 80%+ since 2019</li>
+        <li>65% cash buyer market · 85%+ STR occupancy</li>
+        <li>No state income tax — sustained relocation demand</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><p>Renderings are artistic representations. Final product may vary. Subject to permitting approvals.</p></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 4 — VISION / RENDERING GALLERY
+══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="logo sm"><div class="l1">Turquoise Bay</div><div class="l2"><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div></div><div class="l3">Resort &amp; Marina</div></div>
+    <span class="ph-sec">Vision &amp; Renderings</span><span class="ph-num">04</span>
+  </div>
+  <!-- Large hero rendering -->
+  <div style="position:relative;height:3in;flex-shrink:0;overflow:hidden;">
+    <img src="./images/aerial-property.jpg" alt="Property aerial" style="width:100%;height:100%;object-fit:cover;object-position:center 50%;display:block;">
+    <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(13,31,60,0.82) 0%,rgba(13,31,60,0.18) 55%,rgba(13,31,60,0.04) 100%);"></div>
+    <div style="position:absolute;top:50%;left:0.5in;transform:translateY(-50%);">
+      <div class="ey" style="color:var(--gold-light);margin-bottom:0.07in;">The Vision</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:24pt;font-weight:400;color:var(--white);line-height:1.1;max-width:3.5in;">Resort Living,<br><em style="color:var(--teal-light);">Reimagined</em><br>for the Gulf Coast</div>
+    </div>
+  </div>
+  <!-- 2×2 rendering grid fills remaining space -->
+  <div style="flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;overflow:hidden;">
+    <div style="position:relative;overflow:hidden;">
+      <img src="./images/clubhouse-pool-2.jpg" alt="Clubhouse pool" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,31,60,0.75) 0%,transparent 52%);"></div>
+      <div style="position:absolute;bottom:0.11in;left:0.14in;"><div style="font-family:'Cinzel',serif;font-size:5.5pt;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;">Resort Pool &amp; Clubhouse</div><div style="font-size:7.5pt;font-weight:300;color:rgba(255,255,255,0.65);margin-top:2px;">Indoor-outdoor resort living</div></div>
+    </div>
+    <div style="position:relative;overflow:hidden;">
+      <img src="./images/clubhouse-terrace.jpg" alt="Clubhouse terrace" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,31,60,0.75) 0%,transparent 52%);"></div>
+      <div style="position:absolute;bottom:0.11in;left:0.14in;"><div style="font-family:'Cinzel',serif;font-size:5.5pt;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;">Clubhouse Terrace</div><div style="font-size:7.5pt;font-weight:300;color:rgba(255,255,255,0.65);margin-top:2px;">Al fresco dining &amp; lounge</div></div>
+    </div>
+    <div style="position:relative;overflow:hidden;">
+      <img src="./images/tiki-pier.jpg" alt="Tiki pier" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,31,60,0.75) 0%,transparent 52%);"></div>
+      <div style="position:absolute;bottom:0.11in;left:0.14in;"><div style="font-family:'Cinzel',serif;font-size:5.5pt;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;">Tiki Pier</div><div style="font-size:7.5pt;font-weight:300;color:rgba(255,255,255,0.65);margin-top:2px;">Private waterfront gathering</div></div>
+    </div>
+    <div style="position:relative;overflow:hidden;">
+      <img src="./images/roof-to-gulf.jpg" alt="Rooftop to gulf views" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,31,60,0.75) 0%,transparent 52%);"></div>
+      <div style="position:absolute;bottom:0.11in;left:0.14in;"><div style="font-family:'Cinzel',serif;font-size:5.5pt;letter-spacing:0.15em;color:var(--gold);text-transform:uppercase;">Rooftop to Gulf Views</div><div style="font-size:7.5pt;font-weight:300;color:rgba(255,255,255,0.65);margin-top:2px;">Panoramic Gulf of Mexico vistas</div></div>
+    </div>
+  </div>
+  <div class="foot"><p>Renderings are artistic representations. Final design subject to permitting approvals.</p></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 5 — AMENITIES + MORE RENDERINGS
+══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="logo sm"><div class="l1">Turquoise Bay</div><div class="l2"><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div></div><div class="l3">Resort &amp; Marina</div></div>
+    <span class="ph-sec">Amenities &amp; Design</span><span class="ph-num">05</span>
+  </div>
+  <!-- 3-up image row -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;height:2.55in;flex-shrink:0;">
+    <div style="position:relative;overflow:hidden;">
+      <img src="./images/building-b.jpg" alt="Building B exterior" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,31,60,0.78) 0%,transparent 55%);"></div>
+      <div style="position:absolute;bottom:0.11in;left:0.11in;"><div style="font-family:'Cinzel',serif;font-size:5.5pt;letter-spacing:0.13em;color:var(--gold);text-transform:uppercase;">Building Exterior</div></div>
+    </div>
+    <div style="position:relative;overflow:hidden;">
+      <img src="./images/main-entry.jpg" alt="Main entry" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,31,60,0.78) 0%,transparent 55%);"></div>
+      <div style="position:absolute;bottom:0.11in;left:0.11in;"><div style="font-family:'Cinzel',serif;font-size:5.5pt;letter-spacing:0.13em;color:var(--gold);text-transform:uppercase;">Grand Entry</div></div>
+    </div>
+    <div style="position:relative;overflow:hidden;">
+      <img src="./images/pickleball-court.jpg" alt="Pickleball courts" style="width:100%;height:100%;object-fit:cover;display:block;">
+      <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(13,31,60,0.78) 0%,transparent 55%);"></div>
+      <div style="position:absolute;bottom:0.11in;left:0.11in;"><div style="font-family:'Cinzel',serif;font-size:5.5pt;letter-spacing:0.13em;color:var(--gold);text-transform:uppercase;">Pickleball Courts</div></div>
+    </div>
+  </div>
+  <!-- Amenity detail fills rest -->
+  <div style="flex:1;padding:0.2in 0.5in 0.13in;display:flex;flex-direction:column;">
+    <div class="ey" style="margin-bottom:0.05in;">Full Resort Amenity Program</div>
+    <div class="h2 sm" style="margin-bottom:0.11in;">Every Detail Designed for <em>Luxury Gulf Coast Living</em></div>
+    <div class="g2" style="flex:1;">
+      <div style="display:flex;flex-direction:column;gap:0.075in;">
+        <div class="tc"><h4>Private Marina &amp; Tiki Pier</h4><p>12-slip deep-water marina with tiki pier, watercraft storage, and direct ICW access. A true boater's paradise included with the development.</p></div>
+        <div class="tc"><h4>Resort Clubhouse &amp; Pool Deck</h4><p>Expansive clubhouse with indoor-outdoor dining, resort pool deck, and beach access — the social heart of Turquoise Bay.</p></div>
+        <div class="tc"><h4>Rooftop Solarium Terraces</h4><p>All 14 top-floor Type C units include private rooftop solariums with panoramic Gulf of Mexico and Lemon Bay views.</p></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.075in;">
+        <div class="tc"><h4>Pickleball &amp; Recreation Courts</h4><p>On-site pickleball courts meet the demands of today's active waterfront buyer demographic and add resort-category amenity value.</p></div>
+        <div class="tc"><h4>On-Site Restaurant</h4><p>1,776 SF waterfront restaurant adds curated dining and drives resort destination appeal for both owners and short-term rental guests.</p></div>
+        <div class="tc"><h4>Grand Entry &amp; Arrival Experience</h4><p>Architecturally distinct entry sequence and resort-standard exterior design creating an unmistakable sense of arrival for owners and guests.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><p>Amenity program subject to final design approvals. Renderings are artistic representations.</p></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 6 — UNIT MIX & REVENUE
+══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="logo sm"><div class="l1">Turquoise Bay</div><div class="l2"><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div></div><div class="l3">Resort &amp; Marina</div></div>
+    <span class="ph-sec">Unit Mix &amp; Revenue</span><span class="ph-num">06</span>
+  </div>
+  <div class="body">
+    <div class="ey">Revenue Structure</div>
+    <div class="h2">Unit Mix &amp; <em>Sellout Schedule</em></div>
+    <div class="g3" style="margin-bottom:0.13in;">
+      <div class="tile"><span class="v">42</span><span class="l">Residential Units</span></div>
+      <div class="tile"><span class="v">$1,492</span><span class="l">Blended Price / SF</span></div>
+      <div class="tile"><span class="v">$109.4M</span><span class="l">Total Gross Sellout</span></div>
+    </div>
+    <table style="margin-bottom:0.13in;">
+      <thead><tr><th>Unit Type</th><th>Floor</th><th style="text-align:center;">Units</th><th style="text-align:right;">SF / Unit</th><th style="text-align:right;">Price / SF</th><th style="text-align:right;">Price / Unit</th><th style="text-align:right;">Total Revenue</th></tr></thead>
+      <tbody>
+        <tr><td>Type A · Bay View</td><td>Floor 1</td><td style="text-align:center;">14</td><td class="n">1,692</td><td class="n">$1,329</td><td class="n">$2,248,575</td><td class="n">$31,480,050</td></tr>
+        <tr><td>Type B · Gulf View</td><td>Floor 2</td><td style="text-align:center;">14</td><td class="n">1,692</td><td class="n">$1,477</td><td class="n">$2,499,575</td><td class="n">$34,994,050</td></tr>
+        <tr><td>Type C · Solarium</td><td>Floor 3</td><td style="text-align:center;">14</td><td class="n">1,692</td><td class="n">$1,668</td><td class="n">$2,821,850</td><td class="n">$39,505,900</td></tr>
+        <tr><td>Restaurant</td><td>Ground</td><td style="text-align:center;">1</td><td class="n">1,776</td><td class="n">$650</td><td class="n">$1,154,400</td><td class="n">$1,154,400</td></tr>
+        <tr><td>Marina Slips</td><td>—</td><td style="text-align:center;">12</td><td class="n">—</td><td class="n">—</td><td class="n">$185,000 avg</td><td class="n">$2,220,000</td></tr>
+        <tr class="tot"><td colspan="2"><strong>Total / Blended</strong></td><td style="text-align:center;"><strong>55</strong></td><td class="n">—</td><td class="n"><strong>$1,492</strong></td><td class="n">—</td><td class="n"><strong>$109,354,400</strong></td></tr>
+      </tbody>
+    </table>
+    <div class="rule"></div>
+    <div class="g3" style="margin-bottom:0.13in;">
+      <div style="background:var(--cream);border-radius:6px;padding:0.13in;border-top:3px solid rgba(201,168,76,0.35);">
+        <div style="font-family:'Cinzel',serif;font-size:6.5pt;letter-spacing:0.12em;color:var(--navy);text-transform:uppercase;margin-bottom:4px;">Type A · Floor 1</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:19pt;font-weight:500;color:var(--navy);">$2.25M</div>
+        <div style="font-size:8pt;color:var(--gray);font-weight:300;margin-top:2px;">1,692 SF · $1,329/SF · 14 units</div>
+        <div style="font-size:8pt;color:var(--teal);font-weight:400;margin-top:2px;">$31.5M total revenue</div>
+      </div>
+      <div style="background:var(--cream);border-radius:6px;padding:0.13in;border-top:3px solid rgba(201,168,76,0.6);">
+        <div style="font-family:'Cinzel',serif;font-size:6.5pt;letter-spacing:0.12em;color:var(--navy);text-transform:uppercase;margin-bottom:4px;">Type B · Floor 2</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:19pt;font-weight:500;color:var(--navy);">$2.50M</div>
+        <div style="font-size:8pt;color:var(--gray);font-weight:300;margin-top:2px;">1,692 SF · $1,477/SF · 14 units</div>
+        <div style="font-size:8pt;color:var(--teal);font-weight:400;margin-top:2px;">$35.0M total revenue</div>
+      </div>
+      <div style="background:var(--cream);border-radius:6px;padding:0.13in;border-top:3px solid var(--gold);">
+        <div style="font-family:'Cinzel',serif;font-size:6.5pt;letter-spacing:0.12em;color:var(--navy);text-transform:uppercase;margin-bottom:4px;">Type C · Floor 3 + Solarium</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:19pt;font-weight:500;color:var(--navy);">$2.82M</div>
+        <div style="font-size:8pt;color:var(--gray);font-weight:300;margin-top:2px;">1,692 SF · $1,668/SF · 14 units</div>
+        <div style="font-size:8pt;color:var(--teal);font-weight:400;margin-top:2px;">$39.5M total revenue</div>
+      </div>
+    </div>
+    <div class="g2" style="flex:1;">
+      <div class="tc"><h4>Absorption Schedule</h4><p>Conservative pace of 2 units/month over a 21-month sellout period — below comparable new waterfront product velocity across SWFL. Meaningful cushion against any market softness.</p></div>
+      <div class="tc"><h4>Appraisal vs. Underwriting</h4><p>BBG appraisal DCF projects ~$121M gross sellout. Our $105.9M residential underwriting represents a ~$15M conservative haircut — built-in margin against absorption risk.</p></div>
+    </div>
+  </div>
+  <div class="foot"><p>Projections are forward-looking estimates. Actual results may differ materially from those projected.</p></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 7 — CAPITAL STACK
+══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="logo sm"><div class="l1">Turquoise Bay</div><div class="l2"><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div></div><div class="l3">Resort &amp; Marina</div></div>
+    <span class="ph-sec">Capital Stack</span><span class="ph-num">07</span>
+  </div>
+  <div class="body">
+    <div class="ey">Sources &amp; Uses</div>
+    <div class="h2">Capital Structure &amp; <em>Stack Overview</em></div>
+    <div class="g2" style="flex:1;">
+      <div style="display:flex;flex-direction:column;gap:0.12in;">
+        <div>
+          <div class="ey" style="margin-bottom:0.06in;">Sources of Capital</div>
+          <table style="margin-bottom:0.12in;">
+            <thead><tr><th>Source</th><th style="text-align:right;">Amount</th><th style="text-align:right;">% TDC</th></tr></thead>
+            <tbody>
+              <tr><td>Senior Construction Loan</td><td class="n">$22,000,000</td><td class="n">44.1%</td></tr>
+              <tr><td>Preferred Equity</td><td class="n">$10,000,000</td><td class="n">20.0%</td></tr>
+              <tr><td>LP Equity</td><td class="n">$3,500,000</td><td class="n">7.0%</td></tr>
+              <tr><td>GP Cash Equity</td><td class="n">$1,178,000</td><td class="n">2.4%</td></tr>
+              <tr><td>GP Land (Contributed)</td><td class="n">$5,733,000</td><td class="n">11.5%</td></tr>
+              <tr><td>Other / Reserves</td><td class="n">$7,482,797</td><td class="n">15.0%</td></tr>
+              <tr class="tot"><td><strong>Total Sources</strong></td><td class="n"><strong>$49,893,797</strong></td><td class="n"><strong>100%</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div class="ey" style="margin-bottom:0.06in;">Uses of Capital</div>
+          <table>
+            <thead><tr><th>Use</th><th style="text-align:right;">Amount</th><th style="text-align:right;">% TDC</th></tr></thead>
+            <tbody>
+              <tr><td>Land</td><td class="n">$11,500,000</td><td class="n">23.1%</td></tr>
+              <tr><td>Hard Costs</td><td class="n">$23,905,257</td><td class="n">47.9%</td></tr>
+              <tr><td>Hard Contingency</td><td class="n">$2,569,815</td><td class="n">5.2%</td></tr>
+              <tr><td>Soft Costs</td><td class="n">$5,296,058</td><td class="n">10.6%</td></tr>
+              <tr><td>Financing Costs</td><td class="n">$4,110,667</td><td class="n">8.2%</td></tr>
+              <tr><td>Reserves &amp; Other</td><td class="n">$2,512,000</td><td class="n">5.0%</td></tr>
+              <tr class="tot"><td><strong>Total Dev. Cost</strong></td><td class="n"><strong>$49,893,797</strong></td><td class="n"><strong>100%</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.1in;">
+        <div class="g2" style="gap:0.09in;">
+          <div class="nc"><h4>Loan-to-Cost</h4><span class="big">44.1%</span><p>Conservative LTC ratio — strong lender and equity buffer throughout construction.</p></div>
+          <div class="nc"><h4>Total Equity</h4><span class="big">$20.4M</span><p>LP + GP cash + contributed land. 40.9% of TDC covered by equity.</p></div>
+        </div>
+        <div class="nc">
+          <h4>The Land Equity Advantage</h4>
+          <p>The GP contributes $5,733,000 in land equity at deal entry — against a BBG "As-Is" appraised value of $11,500,000. LP investors capture this value gap from day one with no additional capital outlay. The $5.8M difference between contribution and appraised value represents immediate embedded equity for all investors.</p>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;gap:3px;justify-content:flex-end;">
+          <div class="ey" style="margin-bottom:0.05in;">Capital Stack Visualization</div>
+          <div class="sb" style="background:rgba(42,124,111,0.11);border-left:3px solid var(--teal);"><span style="color:var(--text);">Senior Loan — 44.1%</span><span style="color:var(--teal);font-weight:500;">$22.0M</span></div>
+          <div class="sb" style="background:rgba(201,168,76,0.09);border-left:3px solid rgba(201,168,76,0.5);"><span style="color:var(--text);">Preferred Equity — 20.0%</span><span style="color:var(--gold);font-weight:500;">$10.0M</span></div>
+          <div class="sb" style="background:rgba(13,31,60,0.055);border-left:3px solid rgba(13,31,60,0.25);"><span style="color:var(--text);">LP Equity — 7.0%</span><span style="color:var(--navy);font-weight:500;">$3.5M</span></div>
+          <div class="sb" style="background:rgba(13,31,60,0.035);border-left:3px solid rgba(13,31,60,0.14);"><span style="color:var(--text);">GP Cash — 2.4%</span><span style="color:var(--navy);font-weight:500;">$1.2M</span></div>
+          <div class="sb" style="background:rgba(201,168,76,0.06);border-left:3px solid rgba(201,168,76,0.28);"><span style="color:var(--text);">GP Land (Contributed) — 11.5%</span><span style="color:var(--gold);font-weight:500;">$5.7M</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><p>Capital stack reflects current underwriting and is subject to final lender terms and market conditions.</p></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 8 — INVESTMENT HIGHLIGHTS
+══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="logo sm"><div class="l1">Turquoise Bay</div><div class="l2"><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div></div><div class="l3">Resort &amp; Marina</div></div>
+    <span class="ph-sec">Investment Highlights</span><span class="ph-num">08</span>
+  </div>
+  <!-- Photo banner -->
+  <div style="position:relative;height:1.85in;flex-shrink:0;overflow:hidden;">
+    <img src="./images/clubhouse-pool.jpg" alt="Resort pool" style="width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;">
+    <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(13,31,60,0.9) 0%,rgba(13,31,60,0.52) 50%,rgba(13,31,60,0.14) 100%);"></div>
+    <div style="position:absolute;top:50%;left:0.5in;transform:translateY(-50%);">
+      <div class="ey" style="color:var(--gold-light);margin-bottom:0.07in;">Why Invest</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:24pt;font-weight:400;color:var(--white);line-height:1.1;">Institutional-Grade Foundations.<br><em style="color:var(--teal-light);">Boutique Access.</em></div>
+    </div>
+  </div>
+  <div style="flex:1;padding:0.18in 0.5in 0.13in;display:flex;flex-direction:column;">
+    <div class="g2" style="margin-bottom:0.11in;">
+      <div class="nc"><h4>Preferred Return Structure</h4><p>LP investors hold Class A units — preferred return priority in the waterfall ahead of GP Class B promote. Capital preservation is structurally prioritized before any GP upside is realized.</p></div>
+      <div class="nc"><h4>Conservative Underwriting</h4><p>$105.9M sellout is ~$15M below BBG's DCF appraisal. 2 units/month absorption is below the velocity of comparable new SWFL waterfront product. Both provide meaningful downside buffer.</p></div>
+    </div>
+    <div class="rule"></div>
+    <div class="ey" style="margin-bottom:0.07in;">Multiple Exit Strategies</div>
+    <div class="g2" style="margin-bottom:0.11in;">
+      <ul class="ck"><li>Individual condo sellout — primary strategy</li><li>Short-term resort rental at stabilization</li></ul>
+      <ul class="ck"><li>Refinance and hold at stabilization</li><li>Bulk sale to institutional or strategic buyer</li></ul>
+    </div>
+    <div class="rule"></div>
+    <div class="ey" style="margin-bottom:0.07in;">Key Risk Mitigants</div>
+    <div class="g2" style="flex:1;">
+      <ul class="ck">
+        <li>BBG appraisal confirms land value and sellout range</li>
+        <li>GP land contribution eliminates land carry cost</li>
+        <li>GC is equity partner — full cost &amp; schedule alignment</li>
+        <li>Boral Engineering: 3 BIS awards, licensed PE principal</li>
+        <li>~8-week permitting — minimal entitlement risk</li>
+      </ul>
+      <ul class="ck">
+        <li>PDS Architecture: Firm of the Year 2015–17</li>
+        <li>Conservative absorption vs. market comparable pace</li>
+        <li>$1.9M LP raise modest vs. $49.9M total capital structure</li>
+        <li>10.75% hard cost contingency built into budget</li>
+        <li>Construction lenders engaged — financing de-risked</li>
+      </ul>
+    </div>
+  </div>
+  <div class="foot"><p>All projections forward-looking. Past performance not indicative of future results. See full risk disclosures on final page.</p></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 9 — MARKET ANALYSIS
+══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="logo sm"><div class="l1">Turquoise Bay</div><div class="l2"><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div></div><div class="l3">Resort &amp; Marina</div></div>
+    <span class="ph-sec">Market Analysis</span><span class="ph-num">09</span>
+  </div>
+  <div class="body">
+    <div class="ey">Why Southwest Florida</div>
+    <div class="h2">High-Growth Market. <em>Zero New Supply.</em></div>
+    <p class="prose" style="margin-bottom:0.11in;">Charlotte County and the Southwest Florida Gulf Coast represent one of the strongest real estate corridors in the U.S. — explosive population growth, surging tourism, and a near-total absence of new waterfront inventory create the ideal conditions for a luxury resort development.</p>
+    <div class="g4" style="margin-bottom:0.12in;">
+      <div class="tile"><span class="v">1,000+</span><span class="l">Daily Net Migration to FL</span></div>
+      <div class="tile"><span class="v">#1</span><span class="l">Fastest Growing U.S. State</span></div>
+      <div class="tile"><span class="v">45%</span><span class="l">Charlotte Co. Pop. Growth</span></div>
+      <div class="tile"><span class="v">80%+</span><span class="l">Home Price Appreciation</span></div>
+    </div>
+    <div class="rule"></div>
+    <div class="g2" style="flex:1;">
+      <div style="display:flex;flex-direction:column;gap:0.075in;">
+        <div class="ey" style="margin-bottom:0.03in;">Supply &amp; Demand Imbalance</div>
+        <div class="tc"><h4>&lt;1% Available Waterfront Supply</h4><p>Virtually zero new waterfront inventory in the Englewood/Charlotte County market — new resort-quality product is essentially non-existent.</p></div>
+        <div class="tc"><h4>70%+ Aging Inventory Pre-2000</h4><p>Most coastal condo stock faces rising insurance and special assessment pressure, driving buyers toward new construction alternatives.</p></div>
+        <div class="tc"><h4>85%+ STR Occupancy Year-Round</h4><p>Average occupancy for waterfront vacation rentals in SWFL — supporting strong short-term rental economics for buyers.</p></div>
+        <div class="tc"><h4>$350–$500 Average Daily Rates</h4><p>Comparable Gulf-front properties command premium ADRs year-round, with peak season rates significantly higher still.</p></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.075in;">
+        <div class="ey" style="margin-bottom:0.03in;">Economic Fundamentals</div>
+        <ul class="ck" style="margin-bottom:0.11in;">
+          <li>45% Charlotte County population growth 2010–2023</li>
+          <li>Median household income 15% above state average</li>
+          <li>65% of buyers are cash purchasers</li>
+          <li>Steady retiree and remote worker influx</li>
+          <li>Punta Gorda Airport: fastest-growing small U.S. airport</li>
+          <li>Direct Allegiant flights from 50+ U.S. cities</li>
+          <li>140M+ annual Florida visitors</li>
+          <li>Rising construction costs constraining new supply pipeline</li>
+          <li>No state income tax — sustained relocation demand</li>
+        </ul>
+        <div class="nc">
+          <h4>Market Positioning</h4>
+          <p>Turquoise Bay is positioned as the category that aging SWFL inventory simply cannot compete in — newly built, modern, full-amenity waterfront resort product that meets current buyer expectations on quality, technology, insurance, and lifestyle.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><p>Market data sourced from publicly available reports. Statistics are approximate and subject to change.</p></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 10 — THE TEAM
+══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="logo sm"><div class="l1">Turquoise Bay</div><div class="l2"><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div></div><div class="l3">Resort &amp; Marina</div></div>
+    <span class="ph-sec">The Team</span><span class="ph-num">10</span>
+  </div>
+  <div class="body">
+    <div class="ey">Development Team</div>
+    <div class="h2">Award-Winning Execution. <em>Regionally Proven.</em></div>
+    <!-- VPI Sponsor -->
+    <div style="background:var(--navy);border-radius:8px;padding:0.16in 0.2in;margin-bottom:0.11in;display:flex;gap:0.16in;align-items:flex-start;flex-shrink:0;">
+      <div style="width:44px;height:44px;min-width:44px;border-radius:50%;border:1.5px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:8pt;color:var(--gold);">VPI</div>
+      <div>
+        <div style="font-family:'Cinzel',serif;font-size:6.5pt;letter-spacing:0.18em;color:var(--gold);text-transform:uppercase;margin-bottom:3px;">Sponsor &amp; Developer</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:14pt;font-weight:400;color:var(--white);margin-bottom:5px;">Vantage Point Investments</div>
+        <p style="font-size:8.5pt;color:rgba(255,255,255,0.64);font-weight:300;line-height:1.62;">Led by Robert Knight — Southwest Florida real estate developer with extensive experience across luxury waterfront, mixed-use, and workforce housing. VPI oversees deal structure, capital formation, investor relations, and project execution from entitlement through final sellout.</p>
+      </div>
+    </div>
+    <div class="g2" style="flex:1;gap:0.11in;">
+      <div style="display:flex;flex-direction:column;gap:0.09in;">
+        <div style="background:var(--cream);border-radius:7px;padding:0.14in;border:1px solid rgba(13,31,60,0.08);flex:1;">
+          <div style="font-family:'Cinzel',serif;font-size:6pt;letter-spacing:0.13em;color:var(--teal);text-transform:uppercase;margin-bottom:3px;">GP Partner · Construction Lead</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:13pt;font-weight:400;color:var(--navy);margin-bottom:7px;">General Contractor</div>
+          <ul class="ck"><li>Direct GP equity member — not a hired contractor</li><li>Hard budget commitment at deal entry</li><li>Ground-up multifamily &amp; waterfront construction</li><li>Active SWFL market presence</li><li>Full cost &amp; schedule alignment via equity stake</li></ul>
+        </div>
+        <div style="background:var(--cream);border-radius:7px;padding:0.14in;border:1px solid rgba(13,31,60,0.08);flex:1;">
+          <div style="font-family:'Cinzel',serif;font-size:6pt;letter-spacing:0.13em;color:var(--gold);text-transform:uppercase;margin-bottom:3px;">Civil &amp; Structural Engineering · Licensed PE</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:13pt;font-weight:400;color:var(--navy);margin-bottom:7px;">Boral Engineering, Inc.</div>
+          <ul class="ck"><li>2025 Lee County BIS Award — Commercial $10M–$15M+</li><li>2021 Best Engineering Project — Multi-Story $5M–$8M</li><li>2017 Best Engineering Project — Commercial $2M–$4.9M</li><li>Principal: Andres Boral, PE, MBA · 40 Under 40</li></ul>
+        </div>
+      </div>
+      <div style="background:var(--cream);border-radius:7px;padding:0.14in;border:1px solid rgba(13,31,60,0.08);">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:7px;">
+          <div>
+            <div style="font-family:'Cinzel',serif;font-size:6pt;letter-spacing:0.13em;color:var(--teal);text-transform:uppercase;margin-bottom:3px;">Architectural Design Partner · Fort Myers, FL</div>
+            <div style="font-family:'Cormorant Garamond',serif;font-size:13pt;font-weight:400;color:var(--navy);">PDS Architecture</div>
+          </div>
+          <div style="font-family:'Cinzel',serif;font-size:5.5pt;letter-spacing:0.07em;color:var(--teal);border:1px solid var(--teal);padding:2px 7px;border-radius:4px;white-space:nowrap;margin-top:3px;">Multi-Award-Winning</div>
+        </div>
+        <ul class="ck" style="margin-bottom:0.1in;">
+          <li>2015–2017 Architectural Firm of the Year</li>
+          <li>2017 Commercial Project of the Year</li>
+          <li>2016–2017 Best Architectural Project (Restaurant)</li>
+          <li>60+ years combined senior leadership experience</li>
+          <li>430,000+ SF completed projects delivered on budget</li>
+          <li>Multifamily, mixed-use, hospitality &amp; commercial portfolio</li>
+          <li>Modern digital coordination — constructability-first approach</li>
+        </ul>
+        <div style="padding-top:0.09in;border-top:1px solid rgba(13,31,60,0.08);">
+          <div style="font-family:'Cinzel',serif;font-size:6.5pt;letter-spacing:0.13em;color:var(--navy);text-transform:uppercase;margin-bottom:5px;">Execution Strength</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.05in;">
+            <div style="font-size:7.5pt;font-weight:300;color:var(--gray);">✓ On-budget project delivery</div>
+            <div style="font-size:7.5pt;font-weight:300;color:var(--gray);">✓ Permit-ready coordination</div>
+            <div style="font-size:7.5pt;font-weight:300;color:var(--gray);">✓ BIM &amp; digital workflow</div>
+            <div style="font-size:7.5pt;font-weight:300;color:var(--gray);">✓ SWFL market experience</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><p>This document is confidential and intended solely for accredited investors.</p></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 11 — DEVELOPMENT BUDGET
+══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="logo sm"><div class="l1">Turquoise Bay</div><div class="l2"><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div></div><div class="l3">Resort &amp; Marina</div></div>
+    <span class="ph-sec">Proforma Summary</span><span class="ph-num">11</span>
+  </div>
+  <div class="body">
+    <div class="ey">Development Budget</div>
+    <div class="h2">Construction Budget &amp; <em>Returns Summary</em></div>
+    <div class="g2" style="flex:1;align-items:start;gap:0.2in;">
+      <div style="display:flex;flex-direction:column;gap:0.11in;">
+        <div>
+          <div class="ey" style="margin-bottom:0.06in;">Hard Costs</div>
+          <table>
+            <thead><tr><th>Line Item</th><th style="text-align:right;">Amount</th></tr></thead>
+            <tbody>
+              <tr><td>Sitework &amp; Civil</td><td class="n">$1,890,000</td></tr>
+              <tr><td>Foundation &amp; Concrete</td><td class="n">$4,210,000</td></tr>
+              <tr><td>Structural Steel &amp; Framing</td><td class="n">$3,870,000</td></tr>
+              <tr><td>Exterior Envelope</td><td class="n">$2,540,000</td></tr>
+              <tr><td>MEP Systems</td><td class="n">$4,820,000</td></tr>
+              <tr><td>Interior Finishes</td><td class="n">$3,960,000</td></tr>
+              <tr><td>Marina &amp; Site Amenities</td><td class="n">$1,680,000</td></tr>
+              <tr><td>Pool, Landscaping &amp; Common Areas</td><td class="n">$935,257</td></tr>
+              <tr class="tot"><td><strong>Hard Cost Subtotal</strong></td><td class="n"><strong>$23,905,257</strong></td></tr>
+              <tr><td style="color:var(--gray);font-size:7.5pt;">Hard Cost Contingency (10.75%)</td><td class="n" style="color:var(--gray);font-size:7.5pt;">$2,569,815</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <div class="ey" style="margin-bottom:0.06in;">Soft Costs</div>
+          <table>
+            <thead><tr><th>Line Item</th><th style="text-align:right;">Amount</th></tr></thead>
+            <tbody>
+              <tr><td>Architecture &amp; Engineering</td><td class="n">$1,420,000</td></tr>
+              <tr><td>Permitting &amp; Impact Fees</td><td class="n">$890,000</td></tr>
+              <tr><td>Legal, Accounting &amp; Admin</td><td class="n">$480,000</td></tr>
+              <tr><td>Marketing &amp; Sales</td><td class="n">$1,106,058</td></tr>
+              <tr><td>Insurance &amp; Bonds</td><td class="n">$640,000</td></tr>
+              <tr><td>Developer Fee</td><td class="n">$760,000</td></tr>
+              <tr class="tot"><td><strong>Soft Cost Subtotal</strong></td><td class="n"><strong>$5,296,058</strong></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.11in;">
+        <div>
+          <div class="ey" style="margin-bottom:0.06in;">Returns Summary</div>
+          <table>
+            <thead><tr><th>Metric</th><th style="text-align:right;">Value</th></tr></thead>
+            <tbody>
+              <tr><td>Gross Revenue</td><td class="n">$109,354,400</td></tr>
+              <tr><td>Less: Sales Commission (5%)</td><td class="n">($5,467,720)</td></tr>
+              <tr><td>Net Revenue</td><td class="n">$103,886,680</td></tr>
+              <tr><td>Total Development Cost</td><td class="n">($49,893,797)</td></tr>
+              <tr class="tot"><td><strong>Net Profit</strong></td><td class="n"><strong>~$53,992,883</strong></td></tr>
+              <tr><td>Profit Margin on Revenue</td><td class="n">49.3%</td></tr>
+              <tr><td>Projected IRR</td><td class="n">23%</td></tr>
+              <tr><td>LP Equity Multiple</td><td class="n">2.0×</td></tr>
+              <tr><td>Hold Period</td><td class="n">24–36 months</td></tr>
+              <tr><td>Loan Term</td><td class="n">25 months</td></tr>
+              <tr><td>Construction Period</td><td class="n">15 months</td></tr>
+              <tr><td>Avg. Monthly Draw</td><td class="n">~$3.25M</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="nc">
+          <h4>All-In Cost vs. Sell Price</h4>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.09in;margin-top:0.07in;">
+            <div><span class="big" style="font-size:17pt;">$1,188</span><p>All-in cost / SF</p></div>
+            <div><span class="big" style="font-size:17pt;">$1,492</span><p>Blended sell / SF</p></div>
+          </div>
+          <p style="margin-top:0.07in;border-top:1px solid rgba(255,255,255,0.1);padding-top:0.07in;">$304/SF spread between cost and sellout — substantial margin against overruns or price softness.</p>
+        </div>
+        <div class="tc"><h4>GC Budget Commitment</h4><p>GC is a GP equity partner with a hard budget commitment at deal entry — structural alignment eliminates the typical cost-overrun misalignment of third-party contractors.</p></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><p>Budget figures are current estimates subject to final contractor commitments and permit-stage revisions.</p></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 12 — TIMELINE + COMPS
+══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="logo sm"><div class="l1">Turquoise Bay</div><div class="l2"><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div></div><div class="l3">Resort &amp; Marina</div></div>
+    <span class="ph-sec">Timeline &amp; Comparable Sales</span><span class="ph-num">12</span>
+  </div>
+  <!-- Banner -->
+  <div style="position:relative;height:1.65in;flex-shrink:0;overflow:hidden;">
+    <img src="./images/marina-tiki.jpg" alt="Marina" style="width:100%;height:100%;object-fit:cover;object-position:center 35%;display:block;">
+    <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(13,31,60,0.92) 0%,rgba(13,31,60,0.45) 65%,rgba(13,31,60,0.1) 100%);"></div>
+    <div style="position:absolute;top:50%;left:0.5in;transform:translateY(-50%);">
+      <div class="ey" style="color:var(--gold-light);margin-bottom:0.06in;">Execution Plan</div>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:20pt;font-weight:400;color:var(--white);line-height:1.1;">From Closing to <em style="color:var(--teal-light);">Full Sellout</em></div>
+    </div>
+  </div>
+  <div style="flex:1;padding:0.17in 0.5in 0.13in;display:flex;flex-direction:column;">
+    <!-- Timeline -->
+    <div style="position:relative;margin-bottom:0.14in;">
+      <div style="position:absolute;left:0.84in;top:0.13in;bottom:0.13in;width:2px;background:linear-gradient(to bottom,var(--gold),var(--teal));border-radius:2px;"></div>
+      <div class="tl">
+        <div class="tl-d"><div class="q" style="color:var(--gold);">Q2 2026</div><div class="m">Months 1–2</div></div>
+        <div class="tl-dot" style="background:var(--gold);"></div>
+        <div class="tl-c" style="background:var(--navy);"><h5 style="color:var(--gold);">Phase 1 — Pre-Construction &amp; Equity Close</h5><p style="color:rgba(255,255,255,0.66);">Finalize construction lender, close LP equity raise, submit permits, execute GC contract. Site mobilization begins.</p></div>
+      </div>
+      <div class="tl">
+        <div class="tl-d"><div class="q" style="color:var(--teal);">Q3 2026</div><div class="m">Months 3–5</div></div>
+        <div class="tl-dot" style="background:var(--teal);"></div>
+        <div class="tl-c" style="background:var(--cream);border:1px solid rgba(13,31,60,0.08);"><h5 style="color:var(--teal);">Phase 2 — Foundation &amp; Vertical Start</h5><p style="color:var(--text);">Site clearing, foundation, below-grade construction. Vertical framing begins. Pre-sales open. Marina construction commenced.</p></div>
+      </div>
+      <div class="tl">
+        <div class="tl-d"><div class="q" style="color:var(--teal);">Q1 2027</div><div class="m">Months 6–15</div></div>
+        <div class="tl-dot" style="background:var(--teal);"></div>
+        <div class="tl-c" style="background:var(--cream);border:1px solid rgba(13,31,60,0.08);"><h5 style="color:var(--teal);">Phase 3 — Vertical Construction &amp; Active Sales</h5><p style="color:var(--text);">Full construction through completion. Interior finishes and resort amenity build-out. Active sales targeting 2 closings/month.</p></div>
+      </div>
+      <div class="tl" style="margin-bottom:0;">
+        <div class="tl-d"><div class="q" style="color:var(--gold);">Q2–Q4 2028</div><div class="m">Months 16–36</div></div>
+        <div class="tl-dot" style="background:var(--gold);"></div>
+        <div class="tl-c" style="background:var(--navy);"><h5 style="color:var(--gold);">Phase 4 — Sellout &amp; Investor Distributions</h5><p style="color:rgba(255,255,255,0.66);">Unit closings, loan payoff, waterfall distributions. Full return of capital targeted within 36 months of construction start.</p></div>
+      </div>
+    </div>
+    <!-- Comps table -->
+    <div class="ey" style="margin-bottom:0.06in;">BBG Appraisal — Selected Market Comparables</div>
+    <table style="flex:1;">
+      <thead><tr><th>Property</th><th>Location</th><th style="text-align:center;">Units</th><th style="text-align:right;">Sale Date</th><th style="text-align:right;">Sale Price</th><th style="text-align:right;">$/SF</th><th style="text-align:right;">Adj. $/SF</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Tarpon Point Marina</strong></td><td>Cape Coral, FL</td><td style="text-align:center;">88</td><td class="n">2024</td><td class="n">$156.2M</td><td class="n">$1,628</td><td class="n" style="color:var(--teal);font-weight:500;">$1,695</td></tr>
+        <tr><td><strong>Isles of Collier</strong></td><td>Naples, FL</td><td style="text-align:center;">52</td><td class="n">2023</td><td class="n">$94.8M</td><td class="n">$1,812</td><td class="n" style="color:var(--teal);font-weight:500;">$1,780</td></tr>
+        <tr><td><strong>Harbour Isle</strong></td><td>Holmes Beach, FL</td><td style="text-align:center;">36</td><td class="n">2024</td><td class="n">$49.6M</td><td class="n">$1,488</td><td class="n" style="color:var(--teal);font-weight:500;">$1,510</td></tr>
+        <tr><td><strong>Clearwater Beach Residences</strong></td><td>Clearwater, FL</td><td style="text-align:center;">60</td><td class="n">2023</td><td class="n">$68.9M</td><td class="n">$1,106</td><td class="n" style="color:var(--teal);font-weight:500;">$1,220</td></tr>
+        <tr class="tot"><td colspan="5"><strong>Turquoise Bay — Our Underwriting</strong></td><td class="n"><strong>$1,492</strong></td><td class="n" style="color:var(--gold);"><strong>Conservative</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="foot"><p>Timeline estimated. Comp sales sourced from BBG appraisal. Adjusted figures reflect appraiser time, location, and quality adjustments.</p></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 13 — FAQ & NEXT STEPS
+══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="logo sm"><div class="l1">Turquoise Bay</div><div class="l2"><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div></div><div class="l3">Resort &amp; Marina</div></div>
+    <span class="ph-sec">FAQ &amp; Next Steps</span><span class="ph-num">13</span>
+  </div>
+  <div class="body">
+    <div class="h2 sm" style="margin-bottom:0.11in;">Investor FAQ &amp; <em>How to Participate</em></div>
+    <div class="g2" style="flex:1;">
+      <div style="display:flex;flex-direction:column;gap:0.075in;">
+        <div class="ey" style="margin-bottom:0.03in;">Frequently Asked Questions</div>
+        <div class="tc"><h4>What is the minimum investment?</h4><p>$25,000 minimum. Incremental amounts accepted from accredited investors above the minimum.</p></div>
+        <div class="tc"><h4>Are returns guaranteed?</h4><p>No. Real estate investments carry risk. Projections are based on third-party appraisals and conservative underwriting, but returns are not guaranteed.</p></div>
+        <div class="tc"><h4>What is the expected hold period?</h4><p>Approximately 24–36 months from construction start through full unit sellout and final distributions.</p></div>
+        <div class="tc"><h4>Is this accredited investors only?</h4><p>Yes. This offering is limited to accredited investors as defined by SEC Rule 501 of Regulation D.</p></div>
+        <div class="tc"><h4>Are investor funds held in escrow?</h4><p>Yes. Funds are held in a dedicated escrow account until the offering closes and construction commences.</p></div>
+        <div class="tc"><h4>Can I use my SDIRA or Solo 401(k)?</h4><p>Yes. We accept self-directed IRAs and Solo 401(k)s. Consult your custodian for their specific transfer requirements.</p></div>
+        <div class="tc"><h4>When will I receive distributions?</h4><p>Distributions are made upon unit closings throughout the sellout period, with final distribution upon project close-out.</p></div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.09in;">
+        <div class="ey" style="margin-bottom:0.03in;">Secure Your Allocation</div>
+        <div class="nc">
+          <h4>What LP Investors Receive</h4>
+          <ul class="ck w" style="margin-top:0.07in;">
+            <li>Class A preferred return priority in waterfall</li>
+            <li>Equity ownership interest in the project entity</li>
+            <li>Participation in upside above preferred return</li>
+            <li>Appraisal-backed, third-party verified deal</li>
+            <li>Quarterly reporting and direct sponsor access</li>
+            <li>SDIRA and Solo 401(k) eligible</li>
+          </ul>
+        </div>
+        <div style="background:rgba(42,124,111,0.07);border:1px solid rgba(42,124,111,0.26);border-radius:6px;padding:0.13in 0.15in;">
+          <div class="ey t" style="margin-bottom:0.05in;">Limited Allocation — $1.9M Total Round</div>
+          <p style="font-size:9pt;font-weight:300;color:var(--text);line-height:1.62;">This round is capped at <strong>$1,900,000 in LP equity</strong> and is expected to fill quickly based on existing investor interest. Early commitments secure allocation priority.</p>
+        </div>
+        <div style="border:1px solid rgba(201,168,76,0.28);border-radius:6px;padding:0.13in 0.15in;flex:1;">
+          <div class="ey" style="margin-bottom:0.07in;">Contact &amp; Schedule a Call</div>
+          <p style="font-size:9.5pt;font-weight:300;color:var(--text);line-height:1.88;">
+            <strong>Vantage Point Investments</strong><br>
+            Southwest Florida<br>
+            <span style="color:var(--teal);">vpiflorida.com</span><br>
+            Schedule: <span style="color:var(--teal);">calendly.com/michael-vpiflorida</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="foot"><p>Not an offer to sell securities. Offers made only by PPM to accredited investors. © 2026 Vantage Point Investments.</p></div>
+</div>
+
+<!-- ══════════════════════════════════════
+     PAGE 14 — LEGAL DISCLAIMER
+══════════════════════════════════════ -->
+<div class="page">
+  <div class="ph">
+    <div class="logo sm"><div class="l1">Turquoise Bay</div><div class="l2"><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div><div class="dot" style="width:2.5px;height:2.5px;"></div></div><div class="l3">Resort &amp; Marina</div></div>
+    <span class="ph-sec">Legal Disclosures</span><span class="ph-num">14</span>
+  </div>
+  <div style="flex:1;padding:0.35in 0.55in;display:flex;flex-direction:column;">
+    <div class="ey" style="margin-bottom:0.05in;">Important Disclosures</div>
+    <div class="h2 sm" style="margin-bottom:0.18in;">Legal <em>Disclaimer</em></div>
+    <div class="g2" style="flex:1;gap:0.28in;">
+      <div style="display:flex;flex-direction:column;gap:0.15in;">
+        <div>
+          <div style="font-family:'Cinzel',serif;font-size:7pt;letter-spacing:0.17em;color:var(--navy);text-transform:uppercase;margin-bottom:0.055in;">Not an Offer to Sell Securities</div>
+          <p style="font-size:8.5pt;line-height:1.78;color:var(--gray);">This Investment Summary has been prepared by Vantage Point Investments for informational purposes only. This document does not constitute an offer to sell or a solicitation of an offer to buy any securities. Any offer or sale of securities will be made only pursuant to a definitive Private Placement Memorandum (PPM) and related subscription documents, and only to persons who meet the legal qualifications to invest.</p>
+        </div>
+        <div>
+          <div style="font-family:'Cinzel',serif;font-size:7pt;letter-spacing:0.17em;color:var(--navy);text-transform:uppercase;margin-bottom:0.055in;">Accredited Investors Only</div>
+          <p style="font-size:8.5pt;line-height:1.78;color:var(--gray);">This offering is available exclusively to "accredited investors" as defined under Rule 501 of Regulation D promulgated under the Securities Act of 1933, as amended. By receiving this document, you represent that you are an accredited investor and understand and accept the risks described herein.</p>
+        </div>
+        <div>
+          <div style="font-family:'Cinzel',serif;font-size:7pt;letter-spacing:0.17em;color:var(--navy);text-transform:uppercase;margin-bottom:0.055in;">Forward-Looking Statements</div>
+          <p style="font-size:8.5pt;line-height:1.78;color:var(--gray);">This document contains forward-looking statements including projections of financial performance, IRR, equity multiples, absorption pace, and construction timelines. These projections are based on assumptions management believes reasonable but are inherently uncertain. Actual results may differ materially. Past performance is not indicative of future results.</p>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:0.15in;">
+        <div>
+          <div style="font-family:'Cinzel',serif;font-size:7pt;letter-spacing:0.17em;color:var(--navy);text-transform:uppercase;margin-bottom:0.055in;">Risk Factors</div>
+          <p style="font-size:8.5pt;line-height:1.78;color:var(--gray);">Investments in real estate development projects are speculative and involve a high degree of risk including: construction cost overruns, delays, market condition changes, inability to sell at projected prices or pace, interest rate changes, inability to obtain or maintain financing, zoning and regulatory changes, and force majeure events. Investors could lose all or a substantial portion of their invested capital.</p>
+        </div>
+        <div>
+          <div style="font-family:'Cinzel',serif;font-size:7pt;letter-spacing:0.17em;color:var(--navy);text-transform:uppercase;margin-bottom:0.055in;">No Guarantee of Returns</div>
+          <p style="font-size:8.5pt;line-height:1.78;color:var(--gray);">The projected 23% IRR and 2.0× equity multiple are estimates only and are not guaranteed. There can be no assurance that such returns will be achieved. The actual return may be significantly lower than projected, and you may lose your entire investment.</p>
+        </div>
+        <div>
+          <div style="font-family:'Cinzel',serif;font-size:7pt;letter-spacing:0.17em;color:var(--navy);text-transform:uppercase;margin-bottom:0.055in;">Confidentiality</div>
+          <p style="font-size:8.5pt;line-height:1.78;color:var(--gray);">This document is strictly confidential and provided solely for evaluating a potential investment. By accepting it you agree not to reproduce, distribute, or disclose its contents without the prior written consent of Vantage Point Investments.</p>
+        </div>
+      </div>
+    </div>
+    <div style="margin-top:0.28in;padding-top:0.14in;border-top:1px solid rgba(13,31,60,0.1);display:flex;align-items:center;justify-content:space-between;">
+      <div class="logo md dark">
+        <div class="l1">Turquoise Bay</div>
+        <div class="l2"><div class="dot" style="width:3.5px;height:3.5px;"></div><div class="dot" style="width:3.5px;height:3.5px;"></div><div class="dot" style="width:3.5px;height:3.5px;"></div></div>
+        <div class="l3">Resort &amp; Marina</div>
+      </div>
+      <p style="font-size:7pt;color:rgba(13,31,60,0.3);line-height:1.65;text-align:right;">© 2026 Vantage Point Investments. All rights reserved.<br>This offering is made in compliance with Regulation D, Rule 506(c) of the Securities Act of 1933.<br>Turquoise Bay Resort &amp; Marina · Englewood, Florida</p>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
