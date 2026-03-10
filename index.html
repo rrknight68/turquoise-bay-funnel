@@ -36,8 +36,7 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.2}
 .reveal.visible{opacity:1;transform:translateY(0)}
 
 /* ─── NAV ────────────────────────────────────────────────────────── */
-.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background 0.3s,box-shadow 0.3s;background:transparent}
-.nav.scrolled{background:var(--navy);box-shadow:0 2px 20px rgba(0,0,0,0.3)}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--navy);box-shadow:0 2px 20px rgba(0,0,0,0.3)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 24px;max-width:1400px;margin:0 auto}
 .nav-brand{font-family:var(--display);font-size:1.1rem;font-weight:700;color:var(--white);white-space:nowrap}
 .nav-links{display:flex;gap:24px;align-items:center}
@@ -675,11 +674,7 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.2}
 </footer>
 
 <script>
-// ─── NAV SCROLL ─────────────────────────────────────────────────
 const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-});
 
 // ─── MOBILE NAV TOGGLE ──────────────────────────────────────────
 document.getElementById('navToggle').addEventListener('click', () => {
