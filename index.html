@@ -821,12 +821,15 @@ leadForm.addEventListener('submit', async function(e) {
     message: document.getElementById('lead-message').value.trim() || null
   };
 
-  // Supabase payload — only columns that exist in the leads table
+  // Supabase payload — matches leads table schema
   const payload = {
     funnel_id: 'turquoise_bay',
+    created_at: new Date().toISOString(),
     name: formData.name,
     email: formData.email,
     phone: formData.phone,
+    invest_amount: formData.invest_amount,
+    message: formData.message,
     is_qualified: false,
     origin_app: 'tb_funnel'
   };
