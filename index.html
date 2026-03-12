@@ -823,24 +823,24 @@ leadForm.addEventListener('submit', async function(e) {
     created_at: new Date().toISOString()
   };
 
+  // Fire GHL webhook independently — never blocks or affects form submission
+  fetch('https://primary-production-db41.up.railway.app/webhook/77155bc8-f406-42af-beed-5f194880a4d4', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(payload)
+  }).catch(() => {});
+
   try {
-    const [res] = await Promise.all([
-      fetch(SUPABASE_URL + '/rest/v1/leads', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'apikey': SUPABASE_ANON_KEY,
-          'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
-          'Prefer': 'return=minimal'
-        },
-        body: JSON.stringify(payload)
-      }),
-      fetch('https://primary-production-db41.up.railway.app/webhook/77155bc8-f406-42af-beed-5f194880a4d4', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload)
-      }).catch(() => {})
-    ]);
+    const res = await fetch(SUPABASE_URL + '/rest/v1/leads', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'apikey': SUPABASE_ANON_KEY,
+        'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify(payload)
+    });
     if (!res.ok) throw new Error('Submission failed. Please try again.');
     const firstName = payload.name.split(' ')[0];
     document.getElementById('thankYouHeading').textContent = 'Thank you, ' + firstName + '. Your allocation request has been received.';
