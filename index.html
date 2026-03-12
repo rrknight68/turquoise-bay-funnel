@@ -823,6 +823,7 @@ leadForm.addEventListener('submit', async function(e) {
 
   // Supabase payload — matches leads table schema
   const payload = {
+    lead_id: crypto.randomUUID(),
     funnel_id: 'turquoise_bay',
     created_at: new Date().toISOString(),
     name: formData.name,
