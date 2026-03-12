@@ -813,7 +813,7 @@ leadForm.addEventListener('submit', async function(e) {
   modalError.style.display = 'none';
 
   const amountSelect = document.getElementById('lead-amount');
-  const payload = {
+  const formData = {
     name: document.getElementById('lead-name').value.trim(),
     email: document.getElementById('lead-email').value.trim(),
     phone: document.getElementById('lead-phone').value.trim(),
@@ -821,11 +821,21 @@ leadForm.addEventListener('submit', async function(e) {
     message: document.getElementById('lead-message').value.trim() || null
   };
 
+  // Supabase payload — only columns that exist in the leads table
+  const payload = {
+    funnel_id: 'turquoise_bay',
+    name: formData.name,
+    email: formData.email,
+    phone: formData.phone,
+    is_qualified: false,
+    origin_app: 'tb_funnel'
+  };
+
   // Fire GHL webhook independently — never blocks or affects form submission
   fetch('https://primary-production-db41.up.railway.app/webhook/77155bc8-f406-42af-beed-5f194880a4d4', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(payload)
+    body: JSON.stringify(formData)
   }).catch(() => {});
 
   try {
@@ -844,7 +854,7 @@ leadForm.addEventListener('submit', async function(e) {
       console.error('Supabase error:', res.status, errBody);
       throw new Error('Submission failed. Please try again.');
     }
-    const firstName = payload.name.split(' ')[0];
+    const firstName = formData.name.split(' ')[0];
     document.getElementById('thankYouHeading').textContent = 'Thank you, ' + firstName + '. Your allocation request has been received.';
     modalFormDiv.style.display = 'none';
     modalThankYou.style.display = '';
