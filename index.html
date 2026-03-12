@@ -839,7 +839,11 @@ leadForm.addEventListener('submit', async function(e) {
       },
       body: JSON.stringify(payload)
     });
-    if (!res.ok) throw new Error('Submission failed. Please try again.');
+    if (!res.ok) {
+      const errBody = await res.text();
+      console.error('Supabase error:', res.status, errBody);
+      throw new Error('Submission failed. Please try again.');
+    }
     const firstName = payload.name.split(' ')[0];
     document.getElementById('thankYouHeading').textContent = 'Thank you, ' + firstName + '. Your allocation request has been received.';
     modalFormDiv.style.display = 'none';
