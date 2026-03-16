@@ -864,14 +864,18 @@ leadForm.addEventListener('submit', async function(e) {
         'Content-Type': 'application/json',
         'apikey': SUPABASE_ANON_KEY,
         'Authorization': 'Bearer ' + SUPABASE_ANON_KEY,
-        'Prefer': 'resolution=merge-duplicates,return=minimal'
+        'Prefer': 'return=minimal'
       },
       body: JSON.stringify(payload)
     });
     if (!res.ok) {
       const errBody = await res.text();
-      console.error('Supabase error:', res.status, errBody);
-      throw new Error(errBody || 'Submission failed. Please try again.');
+      // Duplicate email is fine — lead already exists, proceed to thank-you
+      const isDuplicate = errBody.includes('23505') || errBody.includes('duplicate');
+      if (!isDuplicate) {
+        console.error('Supabase error:', res.status, errBody);
+        throw new Error('Submission failed. Please try again.');
+      }
     }
     const firstName = formData.name.split(' ')[0];
     document.getElementById('thankYouHeading').textContent = 'Thank you, ' + firstName + '. Your allocation request has been received.';
