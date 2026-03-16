@@ -835,12 +835,27 @@ leadForm.addEventListener('submit', async function(e) {
     origin_app: 'tb_funnel'
   };
 
-  // Fire GHL webhook independently — never blocks or affects form submission
-  fetch('https://primary-production-db41.up.railway.app/webhook/77155bc8-f406-42af-beed-5f194880a4d4', {
+  // Create/update contact in GHL sub-account
+  fetch('https://services.leadconnectorhq.com/contacts/', {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(formData)
-  }).catch(() => {});
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer pit-354b5bd6-754c-40b6-9c92-6d91a33ad9ab',
+      'Version': '2021-07-28'
+    },
+    body: JSON.stringify({
+      locationId: 'OLOus866G7EeK8aBceOY',
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      tags: ['turquoise-bay-funnel'],
+      customFields: [
+        { key: 'invest_amount', field_value: formData.invest_amount },
+        { key: 'message', field_value: formData.message || '' }
+      ],
+      source: 'Turquoise Bay Funnel'
+    })
+  }).catch(err => console.error('GHL error:', err));
 
   try {
     const res = await fetch(SUPABASE_URL + '/rest/v1/leads', {
