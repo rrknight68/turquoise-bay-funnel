@@ -158,16 +158,6 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.2}
 .invite-feat .feat-check{width:24px;height:24px;border-radius:50%;background:rgba(201,168,76,0.15);color:var(--gold);display:flex;align-items:center;justify-content:center;font-size:0.8rem;flex-shrink:0}
 .invite-ctas{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-top:40px}
 
-/* ─── FAQ ────────────────────────────────────────────────────────── */
-.faq-list{max-width:760px;margin:40px auto 0}
-.faq-item{border-bottom:1px solid #ddd;overflow:hidden}
-.faq-q{display:flex;align-items:center;justify-content:space-between;padding:20px 0;cursor:pointer;font-size:1.05rem;font-weight:500;color:var(--navy);font-family:var(--display);transition:color 0.2s}
-.faq-q:hover{color:var(--gold)}
-.faq-q .faq-icon{font-size:1.4rem;transition:transform 0.3s;color:var(--gold)}
-.faq-q.open .faq-icon{transform:rotate(45deg)}
-.faq-a{max-height:0;overflow:hidden;transition:max-height 0.4s ease,padding 0.3s}
-.faq-a.open{max-height:200px;padding-bottom:20px}
-.faq-a p{font-size:0.93rem;color:var(--gray);line-height:1.7}
 
 /* ─── CLOSING CTA ────────────────────────────────────────────────── */
 .closing{text-align:center;padding:80px 24px}
@@ -212,6 +202,7 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.2}
   .market-top-stats,.supply-grid{grid-template-columns:repeat(2,1fr)}
   .exec-grid,.invite-features{grid-template-columns:repeat(2,1fr)}
   .team-3cols{grid-template-columns:1fr 1fr}
+  .area-photos{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:768px){
   .nav-links{display:none;position:absolute;top:100%;left:0;right:0;background:var(--navy);flex-direction:column;padding:20px 24px;gap:16px;box-shadow:0 10px 30px rgba(0,0,0,0.3)}
@@ -223,6 +214,7 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.2}
   .hero-stat{border-right:none;border-bottom:1px solid rgba(255,255,255,0.1);padding:14px}
   .hero-stat:last-child{border-bottom:none}
   .opp-grid,.invest-grid,.vision-grid,.market-top-stats,.supply-grid,.exec-grid,.invite-features{grid-template-columns:1fr}
+  .area-photos{grid-template-columns:1fr}
   .market-cols,.team-cols,.team-half,.team-3cols{grid-template-columns:1fr}
   .section{padding:64px 0}
   h2{font-size:1.8rem!important}
@@ -252,9 +244,7 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.2}
       <a href="#investment">Investment</a>
       <a href="#market">Market</a>
       <a href="#team">Team</a>
-      <a href="#faq">FAQ</a>
-      <a href="#invite" class="btn-outline" style="padding:6px 14px;border-radius:3px;font-size:0.7rem">View Deck</a>
-      <a href="#" class="cta-link" onclick="openLeadModal(event)">Reserve Spot</a>
+      <a href="https://calendly.com/rob-vpiflorida/30min" target="_blank" rel="noopener" class="cta-link">Reserve Spot with Rob</a>
     </div>
   </div>
 </nav>
@@ -269,7 +259,7 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.2}
     <p class="hero-sub">A Waterfront Resort & Marina on Florida's Gulf Coast</p>
     <p class="hero-detail">Projected 23% IRR, 2.0x equity multiple, and direct ownership in a ground-up mixed-use waterfront resort.</p>
     <div class="hero-ctas">
-      <a href="#" class="btn btn-gold" onclick="openLeadModal(event)">Reserve Your Investor Spot</a>
+      <a href="https://calendly.com/rob-vpiflorida/30min" target="_blank" rel="noopener" class="btn btn-gold">Reserve Your Spot with Rob</a>
       <a href="#invite" class="btn btn-outline">View Investor Deck</a>
     </div>
     <div class="hero-stats">
@@ -387,43 +377,6 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.2}
   </div>
 </section>
 
-<!-- ════════ FOUNDER'S PRICING ════════ -->
-<section class="section bg-cream" id="founders-pricing">
-  <div class="container">
-    <div class="reveal" style="text-align:center">
-      <div class="label">Founder's Release</div>
-      <h2 style="font-size:2.4rem;color:var(--navy);margin-bottom:16px">Founder's Pricing — Closing With Construction Loan Funding</h2>
-      <p class="sub" style="margin:0 auto 12px">6 units remaining at <strong style="color:var(--navy)">$925–$985/SF</strong>. Pricing steps up when the construction loan funds — a real capital event, not a manufactured deadline.</p>
-    </div>
-    <div class="reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;max-width:1000px;margin-left:auto;margin-right:auto">
-      <div style="background:var(--white);border:2px solid var(--gold);border-radius:10px;padding:32px 24px;position:relative">
-        <span style="position:absolute;top:-12px;left:24px;background:var(--gold);color:var(--navy);font-size:0.65rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;padding:4px 12px;border-radius:20px">Open Now</span>
-        <h3 style="font-family:var(--display);font-size:1.4rem;color:var(--navy);margin-bottom:14px">Founder's Tier</h3>
-        <div style="font-family:var(--display);font-size:1.8rem;font-weight:700;color:var(--navy);margin-bottom:6px">$925–$985<span style="font-size:0.9rem;color:var(--gray);font-weight:400">/SF</span></div>
-        <p style="font-size:0.85rem;color:var(--gold);font-weight:600;margin-bottom:18px">Closes with construction loan funding</p>
-        <ul style="list-style:none;padding:0">
-          <li style="font-size:0.88rem;color:var(--dark);padding:5px 0 5px 18px;position:relative"><span style="position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--gold)"></span>Preferred unit selection</li>
-          <li style="font-size:0.88rem;color:var(--dark);padding:5px 0 5px 18px;position:relative"><span style="position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--gold)"></span>Lowest entry price into the project</li>
-          <li style="font-size:0.88rem;color:var(--dark);padding:5px 0 5px 18px;position:relative"><span style="position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--gold)"></span>1031 exchange eligibility</li>
-        </ul>
-      </div>
-      <div style="background:var(--white);border:1px solid #e5e5e5;border-radius:10px;padding:32px 24px">
-        <h3 style="font-family:var(--display);font-size:1.4rem;color:var(--navy);margin-bottom:14px">Phase 1</h3>
-        <div style="font-family:var(--display);font-size:1.8rem;font-weight:700;color:var(--navy);margin-bottom:6px">~5%<span style="font-size:0.9rem;color:var(--gray);font-weight:400"> premium</span></div>
-        <p style="font-size:0.85rem;color:var(--gray);margin-bottom:18px">Opens after construction loan funding</p>
-        <p style="font-size:0.88rem;color:var(--gray);line-height:1.6">First step-up tier following loan close. Available unit count reduced as Founder's-tier units are absorbed.</p>
-      </div>
-      <div style="background:var(--white);border:1px solid #e5e5e5;border-radius:10px;padding:32px 24px">
-        <h3 style="font-family:var(--display);font-size:1.4rem;color:var(--navy);margin-bottom:14px">Phase 2</h3>
-        <div style="font-family:var(--display);font-size:1.8rem;font-weight:700;color:var(--navy);margin-bottom:6px">~10%<span style="font-size:0.9rem;color:var(--gray);font-weight:400"> premium</span></div>
-        <p style="font-size:0.85rem;color:var(--gray);margin-bottom:18px">Opens at vertical construction milestones</p>
-        <p style="font-size:0.88rem;color:var(--gray);line-height:1.6">Final pricing tier reflecting de-risked execution. Founder's economics no longer available.</p>
-      </div>
-    </div>
-    <p class="reveal" style="text-align:center;margin-top:32px;font-size:0.85rem;color:var(--gray);max-width:680px;margin-left:auto;margin-right:auto;font-style:italic">Founder's tier benefits include preferred unit selection, lowest entry, and 1031 exchange eligibility. Subject to availability.</p>
-  </div>
-</section>
-
 <!-- ════════ MARKET ════════ -->
 <section class="section" id="market">
   <div class="container">
@@ -431,6 +384,20 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.2}
       <div class="label">Market Analysis</div>
       <h2 style="font-size:2.4rem;color:var(--navy);margin-bottom:12px">Why Southwest Florida?</h2>
       <p class="sub">A high-demand market with limited new waterfront supply, explosive population growth, and strong fundamentals for real estate investment.</p>
+    </div>
+    <div class="area-photos reveal" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:36px 0 44px">
+      <figure style="margin:0;border-radius:10px;overflow:hidden;box-shadow:0 8px 24px rgba(11,31,51,0.12)">
+        <img src="./images/aerial-property.jpg" alt="Aerial view of the Turquoise Bay site on Florida's Gulf Coast" loading="lazy" style="width:100%;height:230px;object-fit:cover;display:block">
+        <figcaption style="font-size:0.78rem;color:var(--gray);padding:10px 14px;background:var(--white)">The waterfront site &middot; Englewood, FL</figcaption>
+      </figure>
+      <figure style="margin:0;border-radius:10px;overflow:hidden;box-shadow:0 8px 24px rgba(11,31,51,0.12)">
+        <img src="./images/aerial-waterfront.jpg" alt="Aerial of the Gulf Coast waterfront and surrounding area" loading="lazy" style="width:100%;height:230px;object-fit:cover;display:block">
+        <figcaption style="font-size:0.78rem;color:var(--gray);padding:10px 14px;background:var(--white)">Direct Gulf Coast water access</figcaption>
+      </figure>
+      <figure style="margin:0;border-radius:10px;overflow:hidden;box-shadow:0 8px 24px rgba(11,31,51,0.12)">
+        <img src="./images/roof-to-gulf.jpg" alt="View from the site across the water toward the Gulf" loading="lazy" style="width:100%;height:230px;object-fit:cover;display:block">
+        <figcaption style="font-size:0.78rem;color:var(--gray);padding:10px 14px;background:var(--white)">Southwest Florida's boating corridor</figcaption>
+      </figure>
     </div>
     <div class="market-top-stats reveal">
       <div class="market-stat"><div class="m-val">1,000+</div><div class="m-label">Daily net migration to Florida</div></div>
@@ -506,40 +473,40 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.2}
     </div>
 
     <div class="team-half reveal">
-      <!-- GC PARTNER -->
+      <!-- WHITE STONE DEVELOPMENTS — DEVELOPER & CONSTRUCTION MANAGEMENT -->
       <div class="team-card team-card-white">
         <div class="team-card-header">
-          <div class="team-monogram mono-navy">&#128736;</div>
+          <div class="team-monogram mono-navy">WS</div>
           <div><div class="team-badge team-badge-navy">GP Equity Member</div></div>
         </div>
-        <h3>General Contractor</h3>
-        <p class="team-sub">GP Partner &middot; Construction Lead</p>
+        <h3>White Stone Developments</h3>
+        <p class="team-sub">Developer &amp; Construction Management &middot; Dax Urbina, VP of Construction</p>
+        <p style="font-size:0.9rem;color:var(--gray);line-height:1.7;margin-bottom:16px">White Stone is a leading investor-focused builder and local-market expert in Southwest Florida — having built 200 homes across the Cape Coral / Port Charlotte corridor. On Turquoise Bay, White Stone provides construction-management oversight across the development, partnering with Curran &amp; Young — one of the region's largest multifamily general contractors — for the multifamily scope.</p>
         <div class="team-cols">
           <div class="team-col">
-            <h4>Role & Structure</h4>
+            <h4>Dax Urbina &middot; VP of Construction</h4>
             <ul>
-              <li>Direct equity member of the GP — not just a hired contractor</li>
-              <li>Budget certainty through GP-level cost commitment</li>
-              <li>Aligned incentive structure</li>
-              <li>Execution accountability from design through CO</li>
+              <li>30+ years of construction experience</li>
+              <li>1,316 garden-style multifamily units delivered</li>
+              <li>Hundreds of single-family homes across SWFL</li>
+              <li>Proven construction leader — design through CO</li>
             </ul>
           </div>
           <div class="team-col">
-            <h4>Capabilities</h4>
+            <h4>Selected Track Record</h4>
             <ul>
-              <li>Ground-up multifamily & mixed-use construction</li>
-              <li>Florida Building Code & high-wind coastal standards</li>
-              <li>Waterfront and marina construction experience</li>
-              <li>Sub-contractor network and trade cost controls</li>
-              <li>Active Southwest Florida market presence</li>
+              <li>Naples Lakes Country Club &middot; 220 units &middot; Toll Brothers</li>
+              <li>Timberwalk, Fort Myers &middot; 448 units &middot; D.R. Horton</li>
+              <li>Greens Edge at Province Park &middot; 648 units</li>
+              <li>Naples luxury &amp; White Stone single-family homes</li>
             </ul>
           </div>
         </div>
         <div class="risk-strip">
           <span class="risk-tag">GP-aligned incentives reduce execution risk</span>
-          <span class="risk-tag">Budget commitment at deal entry</span>
-          <span class="risk-tag">Coastal construction expertise</span>
-          <span class="risk-tag">Established subcontractor relationships</span>
+          <span class="risk-tag">1,316 multifamily units delivered</span>
+          <span class="risk-tag">Local Cape Coral / Port Charlotte expertise</span>
+          <span class="risk-tag">Curran &amp; Young GC partnership</span>
         </div>
       </div>
 
@@ -718,54 +685,6 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.2}
   </div>
 </section>
 
-<!-- ════════ FAQ ════════ -->
-<section class="section bg-cream" id="faq">
-  <div class="container">
-    <div class="reveal" style="text-align:center">
-      <div class="label">Frequently Asked Questions</div>
-      <h2 style="font-size:2.4rem;color:var(--navy)">Common Investor Questions</h2>
-    </div>
-    <div class="faq-list reveal">
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What is the minimum investment?<span class="faq-icon">+</span></div>
-        <div class="faq-a"><p>$25K LP minimum. We accept investments in increments above the minimum.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What stage is the project?<span class="faq-icon">+</span></div>
-        <div class="faq-a"><p>Gopher tortoise permit has been cleared. The balance of permits are in resubmission and construction funding is being finalized. Our sister project, Lake Shadroe in Cape Coral, has already closed its construction loan — same team, same thesis.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Who is the operator?<span class="faq-icon">+</span></div>
-        <div class="faq-a"><p>Roelens Vacations, led by Koen Roelens. Roelens manages 300+ properties in Cape Coral and is participating as an equity co-investor in Turquoise Bay — not just a third-party manager. Operator alignment from day one.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">What is Lake Shadroe?<span class="faq-icon">+</span></div>
-        <div class="faq-a"><p>Lake Shadroe Resort &amp; Marina is Turquoise Bay's sister project — a 48-unit waterfront condo-hotel in Cape Coral, FL with the same VPI development team and the same Roelens STR operator. Lake Shadroe's construction loan has closed, providing live proof of the VPI execution model that Turquoise Bay is now following.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Are returns guaranteed?<span class="faq-icon">+</span></div>
-        <div class="faq-a"><p>No. Real estate investments carry risk. Our projections are based on third-party appraisals and conservative underwriting, but returns are not guaranteed.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">How long is the expected hold period?<span class="faq-icon">+</span></div>
-        <div class="faq-a"><p>The projected hold period is approximately 24-36 months from construction start through condo sellout.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Is this accredited investors only?<span class="faq-icon">+</span></div>
-        <div class="faq-a"><p>Yes. This offering is limited to accredited investors as defined by SEC Rule 501.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Are funds held in escrow?<span class="faq-icon">+</span></div>
-        <div class="faq-a"><p>Yes. Investor funds are held in a dedicated escrow account until the offering closes and construction commences.</p></div>
-      </div>
-      <div class="faq-item">
-        <div class="faq-q" onclick="toggleFaq(this)">Can I use my SDIRA or Solo 401(k)?<span class="faq-icon">+</span></div>
-        <div class="faq-a"><p>Yes. We accept investments from self-directed IRAs and Solo 401(k)s. Please consult your custodian for their specific requirements.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- ════════ CLOSING CTA ════════ -->
 <section class="bg-navy closing">
   <div class="container reveal">
@@ -852,19 +771,6 @@ const revealObserver = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.15 });
 revealEls.forEach(el => revealObserver.observe(el));
-
-// ─── FAQ ACCORDION ──────────────────────────────────────────────
-function toggleFaq(el) {
-  const wasOpen = el.classList.contains('open');
-  // Close all
-  document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('open'));
-  document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('open'));
-  // Toggle clicked
-  if (!wasOpen) {
-    el.classList.add('open');
-    el.nextElementSibling.classList.add('open');
-  }
-}
 
 // ─── LEAD CAPTURE MODAL ────────────────────────────────────────
 const SUPABASE_URL = 'https://yefrzehgaldvktuxdrms.supabase.co';
