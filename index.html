@@ -59,16 +59,19 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.2}
 .btn-navy:hover{background:#0a1830;transform:translateY(-1px)}
 
 /* ─── HERO ───────────────────────────────────────────────────────── */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--white);overflow:hidden}
-/* Hero image = TB-003 (stump-pass-aerial, 2894x590) per the TB image library.
-   TB-003 is a 4.91:1 ultrawide banner crop: under center/cover a 100vh hero shows
-   only ~36% of its width on desktop and ~10% on a phone. Below 1100px we therefore
-   fall back to hero.jpg — the SAME Stump Pass photograph at TB-001's 1.84:1 crop —
-   so narrow viewports still get the beach, the pass and the boats. */
+/* Hero image = TB-003 (stump-pass-aerial, 2894x590 = 4.91:1) per the TB image
+   library. The hero is a SHORT BANNER whose box carries the image's own aspect
+   ratio, so TB-003 renders FULL WIDTH and completely uncropped at every viewport
+   — no letterboxing, no centre-crop, no per-breakpoint substitution. Hero copy
+   sits below the banner on navy rather than over the photograph.
+   Note: because the source is 4.91:1, the band is ~390px tall at 1920px wide and
+   ~80px tall on a 390px phone. That thinness is inherent to showing this crop
+   whole; a min-height would bring back a horizontal crop. */
+.hero{position:relative;background:var(--navy);color:var(--white);text-align:center;padding-top:var(--nav-h,66px)}
+.hero-banner{position:relative;width:100%;aspect-ratio:2894/590;overflow:hidden}
 .hero-bg{position:absolute;inset:0;background:url('./stump-pass-hero.jpg') center/cover no-repeat}
-@media (max-width:1100px){ .hero-bg{background-image:url('./hero.jpg')} }
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,31,60,0.45) 0%,rgba(13,31,60,0.2) 50%,rgba(13,31,60,0.6) 100%)}
-.hero-content{position:relative;z-index:2;max-width:800px;padding:120px 24px 60px}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,31,60,0.22) 0%,rgba(13,31,60,0) 46%,rgba(13,31,60,0.55) 82%,var(--navy) 100%)}
+.hero-content{position:relative;z-index:2;max-width:800px;margin:0 auto;padding:40px 24px 64px}
 .hero-badge{display:inline-block;font-size:0.7rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;background:rgba(201,168,76,0.15);border:1px solid var(--gold);color:var(--gold);padding:8px 20px;border-radius:30px;margin-bottom:24px}
 .hero h1{font-size:3.2rem;font-weight:700;margin-bottom:12px}
 .hero .hero-sub{font-family:var(--display);font-size:1.4rem;font-weight:400;font-style:italic;color:rgba(255,255,255,0.85);margin-bottom:20px}
@@ -257,8 +260,10 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.2}
 
 <!-- ════════ HERO ════════ -->
 <section class="hero" id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
+  <div class="hero-banner">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+  </div>
   <div class="hero-content">
     <div class="hero-badge">Now Accepting Accredited Investors</div>
     <h1>Invest in Turquoise Bay Resort</h1>
@@ -754,6 +759,20 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.2}
 
 <script>
 const nav = document.getElementById('nav');
+
+// ─── HERO BANNER OFFSET ─────────────────────────────────────────
+// The nav is position:fixed, so the hero banner has to start below it.
+// Nav height is not constant — at <=768px the links collapse to a toggle
+// and the bar grows — so measure it rather than hard-coding an offset.
+(function () {
+  if (!nav) return;
+  const setNavH = () =>
+    document.documentElement.style.setProperty('--nav-h', nav.offsetHeight + 'px');
+  setNavH();
+  addEventListener('resize', setNavH);
+  addEventListener('orientationchange', setNavH);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(setNavH);
+})();
 
 // ─── MOBILE NAV TOGGLE ──────────────────────────────────────────
 document.getElementById('navToggle').addEventListener('click', () => {
