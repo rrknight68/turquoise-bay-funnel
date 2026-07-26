@@ -60,7 +60,13 @@ h1,h2,h3,h4{font-family:var(--display);font-weight:600;line-height:1.2}
 
 /* ─── HERO ───────────────────────────────────────────────────────── */
 .hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:var(--white);overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('./hero.jpg') center/cover no-repeat}
+/* Hero image = TB-003 (stump-pass-aerial, 2894x590) per the TB image library.
+   TB-003 is a 4.91:1 ultrawide banner crop: under center/cover a 100vh hero shows
+   only ~36% of its width on desktop and ~10% on a phone. Below 1100px we therefore
+   fall back to hero.jpg — the SAME Stump Pass photograph at TB-001's 1.84:1 crop —
+   so narrow viewports still get the beach, the pass and the boats. */
+.hero-bg{position:absolute;inset:0;background:url('./stump-pass-hero.jpg') center/cover no-repeat}
+@media (max-width:1100px){ .hero-bg{background-image:url('./hero.jpg')} }
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,31,60,0.45) 0%,rgba(13,31,60,0.2) 50%,rgba(13,31,60,0.6) 100%)}
 .hero-content{position:relative;z-index:2;max-width:800px;padding:120px 24px 60px}
 .hero-badge{display:inline-block;font-size:0.7rem;font-weight:600;letter-spacing:0.2em;text-transform:uppercase;background:rgba(201,168,76,0.15);border:1px solid var(--gold);color:var(--gold);padding:8px 20px;border-radius:30px;margin-bottom:24px}
